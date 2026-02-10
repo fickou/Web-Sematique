@@ -1,0 +1,96 @@
+classDiagram
+direction LR
+
+%% =========================
+%% CLASSES HUMAINES
+%% =========================
+class Personne {
+  nom : Literal
+}
+
+class Enseignant
+class EnseignantChercheur
+class Etudiant
+class Doctorant
+class PersonnelAdministratif
+
+Personne <|-- Enseignant
+Personne <|-- Etudiant
+Personne <|-- PersonnelAdministratif
+Etudiant <|-- Doctorant
+Enseignant <|-- EnseignantChercheur
+
+note "OWL : Enseignant AND membreDe Laboratoire" as N1
+N1 .. EnseignantChercheur
+
+note "OWL : exactement 1 formation" as N2
+N2 .. Etudiant
+
+%% =========================
+%% STRUCTURE ACADEMIQUE
+%% =========================
+class Universite
+class Faculte
++class Departement
+class EcoleDoctorale
+
+Universite "1" --> "*" Faculte : contient
+Faculte "1" --> "*" Departement : appartientA
+Universite "1" --> "*" EcoleDoctorale : abrite
+
+Doctorant "1" --> "1" EcoleDoctorale : inscritDans
+
+%% =========================
+%% FORMATIONS
+%% =========================
+class Formation
+class Maquette
+class UniteEnseignement
+
+Faculte "1" --> "*" Formation : offre
+Formation "1" --> "1" Maquette : estDecritePar
+Formation "1" --> "1..*" UniteEnseignement : contientUE
+
+Etudiant "1" --> "1" Formation : inscritDans
+Enseignant "1" --> "0..*" UniteEnseignement : enseigne
+
+%% =========================
+%% RECHERCHE
+%% =========================
+class Laboratoire
+class ProjetRecherche
+class Publication
+
+EnseignantChercheur "1..*" --> "1" Laboratoire : membreDe
+EnseignantChercheur "0..*" --> "0..*" ProjetRecherche : participeA
+EnseignantChercheur "0..*" --> "0..*" Publication : publie
+
+%% =========================
+%% RESSOURCES MATERIELLES
+%% =========================
+class RessourceMaterielle
+class Imprimante3D
+class SuperCalculateur
+class ServeurCloud
+class Incubateur
+
+RessourceMaterielle <|-- Imprimante3D
+RessourceMaterielle <|-- SuperCalculateur
+RessourceMaterielle <|-- ServeurCloud
+RessourceMaterielle <|-- Incubateur
+
+%% =========================
+%% INFRASTRUCTURES
+%% =========================
+class Batiment
+class SalleClasse
+class Amphitheatre
+class Bureau
+class Restaurant
+class InstallationSportiveCulturelle
+
+Batiment "1" --> "*" SalleClasse
+Batiment "1" --> "*" Amphitheatre
+Batiment "1" --> "*" Bureau
+Batiment "1" --> "*" Restaurant
+Batiment "1" --> "*" InstallationSportiveCulturelle

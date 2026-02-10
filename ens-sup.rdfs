@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:ens="http://www.ugb.sn/ressources/ens-sup.rdfs#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xml:base="http://www.ugb.sn/ressources/ens-sup.rdfs">
+
+  <!-- SCHÉMA RDFS : Ressources de l'Enseignement Supérieur -->
+
+  <!-- CLASSES PRINCIPALES -->
+
+  <!-- Classe Personne -->
+  <rdfs:Class rdf:ID="Personne">
+    <rdfs:label xml:lang="fr">Personne</rdfs:label>
+    <rdfs:comment xml:lang="fr">Représente une personne impliquée dans l'enseignement supérieur</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdfs:Class>
+
+  <!-- Sous-classes de Personne -->
+  <rdfs:Class rdf:ID="Enseignant">
+    <rdfs:label xml:lang="fr">Enseignant</rdfs:label>
+    <rdfs:comment xml:lang="fr">Personne qui enseigne dans un établissement d'enseignement supérieur</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Personne"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Chercheur">
+    <rdfs:label xml:lang="fr">Chercheur</rdfs:label>
+    <rdfs:comment xml:lang="fr">Personne qui effectue des travaux de recherche</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Personne"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="EnseignantChercheur">
+    <rdfs:label xml:lang="fr">Enseignant-Chercheur</rdfs:label>
+    <rdfs:comment xml:lang="fr">Personne qui cumule les fonctions d'enseignement et de recherche</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Enseignant"/>
+    <rdfs:subClassOf rdf:resource="#Chercheur"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Etudiant">
+    <rdfs:label xml:lang="fr">Étudiant</rdfs:label>
+    <rdfs:comment xml:lang="fr">Personne inscrite dans une formation de l'enseignement supérieur</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Personne"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Doctorant">
+    <rdfs:label xml:lang="fr">Doctorant</rdfs:label>
+    <rdfs:comment xml:lang="fr">Étudiant inscrit en doctorat</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Etudiant"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="PersonnelAdministratif">
+    <rdfs:label xml:lang="fr">Personnel Administratif</rdfs:label>
+    <rdfs:comment xml:lang="fr">Personnel non enseignant travaillant dans l'administration</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Personne"/>
+  </rdfs:Class>
+
+  <!-- Classes Structures Académiques -->
+  <rdfs:Class rdf:ID="Universite">
+    <rdfs:label xml:lang="fr">Université</rdfs:label>
+    <rdfs:comment xml:lang="fr">Établissement d'enseignement supérieur et de recherche</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Faculte">
+    <rdfs:label xml:lang="fr">Faculté / UFR</rdfs:label>
+    <rdfs:comment xml:lang="fr">Unité de Formation et de Recherche au sein d'une université</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="EcoleDoctorale">
+    <rdfs:label xml:lang="fr">École Doctorale</rdfs:label>
+    <rdfs:comment xml:lang="fr">Structure d'accueil et de formation des doctorants</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Departement">
+    <rdfs:label xml:lang="fr">Département</rdfs:label>
+    <rdfs:comment xml:lang="fr">Division administrative au sein d'une faculté</rdfs:comment>
+  </rdfs:Class>
+
+  <!-- Classes Formations -->
+  <rdfs:Class rdf:ID="Formation">
+    <rdfs:label xml:lang="fr">Formation</rdfs:label>
+    <rdfs:comment xml:lang="fr">Programme d'études proposé par un établissement</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Licence">
+    <rdfs:label xml:lang="fr">Licence</rdfs:label>
+    <rdfs:comment xml:lang="fr">Formation de niveau Bac+3</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Formation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Master">
+    <rdfs:label xml:lang="fr">Master</rdfs:label>
+    <rdfs:comment xml:lang="fr">Formation de niveau Bac+5</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Formation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Doctorat">
+    <rdfs:label xml:lang="fr">Doctorat</rdfs:label>
+    <rdfs:comment xml:lang="fr">Formation de niveau Bac+8 préparant au grade de docteur</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Formation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="UniteEnseignement">
+    <rdfs:label xml:lang="fr">Unité d'Enseignement</rdfs:label>
+    <rdfs:comment xml:lang="fr">Module composant une formation</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Maquette">
+    <rdfs:label xml:lang="fr">Maquette de Formation</rdfs:label>
+    <rdfs:comment xml:lang="fr">Description structurée du contenu d'une formation</rdfs:comment>
+  </rdfs:Class>
+
+  <!-- Classes Recherche -->
+  <rdfs:Class rdf:ID="Laboratoire">
+    <rdfs:label xml:lang="fr">Laboratoire</rdfs:label>
+    <rdfs:comment xml:lang="fr">Structure de recherche regroupant des chercheurs</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="ProjetRecherche">
+    <rdfs:label xml:lang="fr">Projet de Recherche</rdfs:label>
+    <rdfs:comment xml:lang="fr">Initiative de recherche avec objectifs et financement</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Publication">
+    <rdfs:label xml:lang="fr">Publication Scientifique</rdfs:label>
+    <rdfs:comment xml:lang="fr">Document publié présentant des résultats de recherche</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="ResultatRecherche">
+    <rdfs:label xml:lang="fr">Résultat de Recherche</rdfs:label>
+    <rdfs:comment xml:lang="fr">Produit issu d'un travail de recherche</rdfs:comment>
+  </rdfs:Class>
+
+  <!-- Classes Ressources Matérielles -->
+  <rdfs:Class rdf:ID="RessourceMaterielle">
+    <rdfs:label xml:lang="fr">Ressource Matérielle</rdfs:label>
+    <rdfs:comment xml:lang="fr">Équipement ou infrastructure physique</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Imprimante3D">
+    <rdfs:label xml:lang="fr">Imprimante 3D</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#RessourceMaterielle"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="SuperCalculateur">
+    <rdfs:label xml:lang="fr">Super Calculateur</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#RessourceMaterielle"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="ServeurCloud">
+    <rdfs:label xml:lang="fr">Serveur Cloud</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#RessourceMaterielle"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Incubateur">
+    <rdfs:label xml:lang="fr">Incubateur</rdfs:label>
+    <rdfs:comment xml:lang="fr">Structure d'accompagnement de startups et projets innovants</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RessourceMaterielle"/>
+  </rdfs:Class>
+
+  <!-- Classes Infrastructures -->
+  <rdfs:Class rdf:ID="Infrastructure">
+    <rdfs:label xml:lang="fr">Infrastructure</rdfs:label>
+    <rdfs:comment xml:lang="fr">Bâtiment ou espace au sein de l'université</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Batiment">
+    <rdfs:label xml:lang="fr">Bâtiment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="SalleClasse">
+    <rdfs:label xml:lang="fr">Salle de Classe</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Amphitheatre">
+    <rdfs:label xml:lang="fr">Amphithéâtre</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Bureau">
+    <rdfs:label xml:lang="fr">Bureau</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Restaurant">
+    <rdfs:label xml:lang="fr">Restaurant</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="InstallationSportiveCulturelle">
+    <rdfs:label xml:lang="fr">Installation Sportive et Culturelle</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+  </rdfs:Class>
+
+  <!-- PROPRIÉTÉS RDFS -->
+
+  <!-- Propriétés liées à l'enseignement -->
+  <rdf:Property rdf:ID="enseigne">
+    <rdfs:label xml:lang="fr">enseigne</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un enseignant à une unité d'enseignement</rdfs:comment>
+    <rdfs:domain rdf:resource="#Enseignant"/>
+    <rdfs:range rdf:resource="#UniteEnseignement"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="estEnseigneePar">
+    <rdfs:label xml:lang="fr">est enseignée par</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie une UE à son enseignant</rdfs:comment>
+    <rdfs:domain rdf:resource="#UniteEnseignement"/>
+    <rdfs:range rdf:resource="#Enseignant"/>
+  </rdf:Property>
+
+  <!-- Propriétés liées aux inscriptions -->
+  <rdf:Property rdf:ID="inscritDans">
+    <rdfs:label xml:lang="fr">inscrit dans</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un étudiant à sa formation</rdfs:comment>
+    <rdfs:domain rdf:resource="#Etudiant"/>
+    <rdfs:range rdf:resource="#Formation"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="inscritDansED">
+    <rdfs:label xml:lang="fr">inscrit dans école doctorale</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un doctorant à son école doctorale</rdfs:comment>
+    <rdfs:domain rdf:resource="#Doctorant"/>
+    <rdfs:range rdf:resource="#EcoleDoctorale"/>
+  </rdf:Property>
+
+  <!-- Propriétés liées à l'appartenance organisationnelle -->
+  <rdf:Property rdf:ID="appartientA">
+    <rdfs:label xml:lang="fr">appartient à</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un département à sa faculté</rdfs:comment>
+    <rdfs:domain rdf:resource="#Departement"/>
+    <rdfs:range rdf:resource="#Faculte"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="offre">
+    <rdfs:label xml:lang="fr">offre</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie une faculté à une formation proposée</rdfs:comment>
+    <rdfs:domain rdf:resource="#Faculte"/>
+    <rdfs:range rdf:resource="#Formation"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="contientUE">
+    <rdfs:label xml:lang="fr">contient UE</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie une formation à ses unités d'enseignement</rdfs:comment>
+    <rdfs:domain rdf:resource="#Formation"/>
+    <rdfs:range rdf:resource="#UniteEnseignement"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="faitPartieDe">
+    <rdfs:label xml:lang="fr">fait partie de</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie une faculté à son université</rdfs:comment>
+    <rdfs:domain rdf:resource="#Faculte"/>
+    <rdfs:range rdf:resource="#Universite"/>
+  </rdf:Property>
+
+  <!-- Propriétés liées à la recherche -->
+  <rdf:Property rdf:ID="membreDe">
+    <rdfs:label xml:lang="fr">membre de</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un chercheur à son laboratoire</rdfs:comment>
+    <rdfs:domain rdf:resource="#Chercheur"/>
+    <rdfs:range rdf:resource="#Laboratoire"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="participeA">
+    <rdfs:label xml:lang="fr">participe à</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un chercheur à un projet de recherche</rdfs:comment>
+    <rdfs:domain rdf:resource="#Chercheur"/>
+    <rdfs:range rdf:resource="#ProjetRecherche"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="publie">
+    <rdfs:label xml:lang="fr">publie</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un chercheur à une publication</rdfs:comment>
+    <rdfs:domain rdf:resource="#Chercheur"/>
+    <rdfs:range rdf:resource="#Publication"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="dirigePar">
+    <rdfs:label xml:lang="fr">dirigé par</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un doctorant à son directeur de thèse</rdfs:comment>
+    <rdfs:domain rdf:resource="#Doctorant"/>
+    <rdfs:range rdf:resource="#EnseignantChercheur"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="rattacheA">
+    <rdfs:label xml:lang="fr">rattaché à</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un laboratoire à une université</rdfs:comment>
+    <rdfs:domain rdf:resource="#Laboratoire"/>
+    <rdfs:range rdf:resource="#Universite"/>
+  </rdf:Property>
+
+  <!-- Propriétés de métadonnées -->
+  <rdf:Property rdf:ID="nom">
+    <rdfs:label xml:lang="fr">nom</rdfs:label>
+    <rdfs:comment xml:lang="fr">Nom d'une ressource</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/name"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="email">
+    <rdfs:label xml:lang="fr">email</rdfs:label>
+    <rdfs:comment xml:lang="fr">Adresse email</rdfs:comment>
+    <rdfs:domain rdf:resource="#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/mbox"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="titre">
+    <rdfs:label xml:lang="fr">titre</rdfs:label>
+    <rdfs:comment xml:lang="fr">Titre d'une publication ou d'une formation</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="dateCreation">
+    <rdfs:label xml:lang="fr">date de création</rdfs:label>
+    <rdfs:comment xml:lang="fr">Date de création de la ressource</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="credits">
+    <rdfs:label xml:lang="fr">crédits ECTS</rdfs:label>
+    <rdfs:comment xml:lang="fr">Nombre de crédits ECTS pour une UE ou formation</rdfs:comment>
+    <rdfs:domain rdf:resource="#UniteEnseignement"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="capacite">
+    <rdfs:label xml:lang="fr">capacité</rdfs:label>
+    <rdfs:comment xml:lang="fr">Capacité d'accueil d'une infrastructure</rdfs:comment>
+    <rdfs:domain rdf:resource="#Infrastructure"/>
+  </rdf:Property>
+
+</rdf:RDF>

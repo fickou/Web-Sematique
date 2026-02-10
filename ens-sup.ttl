@@ -1,0 +1,281 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ens: <http://www.ugb.sn/ressources/ens-sup.rdfs#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# =============================================
+# SCHÉMA RDFS : Ressources de l'Enseignement Supérieur (Turtle)
+# Namespace: http://www.ugb.sn/ressources/ens-sup.rdfs
+# =============================================
+
+# =====================
+# CLASSES PRINCIPALES
+# =====================
+
+# --- Ressources Humaines ---
+ens:Personne a rdfs:Class ;
+    rdfs:label "Personne"@fr ;
+    rdfs:comment "Représente une personne impliquée dans l'enseignement supérieur"@fr ;
+    rdfs:subClassOf foaf:Person .
+
+ens:Enseignant a rdfs:Class ;
+    rdfs:label "Enseignant"@fr ;
+    rdfs:comment "Personne qui enseigne dans un établissement d'enseignement supérieur"@fr ;
+    rdfs:subClassOf ens:Personne .
+
+ens:Chercheur a rdfs:Class ;
+    rdfs:label "Chercheur"@fr ;
+    rdfs:comment "Personne qui effectue des travaux de recherche"@fr ;
+    rdfs:subClassOf ens:Personne .
+
+ens:EnseignantChercheur a rdfs:Class ;
+    rdfs:label "Enseignant-Chercheur"@fr ;
+    rdfs:comment "Personne qui cumule les fonctions d'enseignement et de recherche"@fr ;
+    rdfs:subClassOf ens:Enseignant, ens:Chercheur .
+
+ens:Etudiant a rdfs:Class ;
+    rdfs:label "Étudiant"@fr ;
+    rdfs:comment "Personne inscrite dans une formation de l'enseignement supérieur"@fr ;
+    rdfs:subClassOf ens:Personne .
+
+ens:Doctorant a rdfs:Class ;
+    rdfs:label "Doctorant"@fr ;
+    rdfs:comment "Étudiant inscrit en doctorat"@fr ;
+    rdfs:subClassOf ens:Etudiant .
+
+ens:PersonnelAdministratif a rdfs:Class ;
+    rdfs:label "Personnel Administratif"@fr ;
+    rdfs:comment "Personnel non enseignant travaillant dans l'administration"@fr ;
+    rdfs:subClassOf ens:Personne .
+
+# --- Structures Académiques ---
+ens:Universite a rdfs:Class ;
+    rdfs:label "Université"@fr ;
+    rdfs:comment "Établissement d'enseignement supérieur et de recherche"@fr .
+
+ens:Faculte a rdfs:Class ;
+    rdfs:label "Faculté / UFR"@fr ;
+    rdfs:comment "Unité de Formation et de Recherche au sein d'une université"@fr .
+
+ens:EcoleDoctorale a rdfs:Class ;
+    rdfs:label "École Doctorale"@fr ;
+    rdfs:comment "Structure d'accueil et de formation des doctorants"@fr .
+
+ens:Departement a rdfs:Class ;
+    rdfs:label "Département"@fr ;
+    rdfs:comment "Division administrative au sein d'une faculté"@fr .
+
+# --- Formations ---
+ens:Formation a rdfs:Class ;
+    rdfs:label "Formation"@fr ;
+    rdfs:comment "Programme d'études proposé par un établissement"@fr .
+
+ens:Licence a rdfs:Class ;
+    rdfs:label "Licence"@fr ;
+    rdfs:comment "Formation de niveau Bac+3"@fr ;
+    rdfs:subClassOf ens:Formation .
+
+ens:Master a rdfs:Class ;
+    rdfs:label "Master"@fr ;
+    rdfs:comment "Formation de niveau Bac+5"@fr ;
+    rdfs:subClassOf ens:Formation .
+
+ens:Doctorat a rdfs:Class ;
+    rdfs:label "Doctorat"@fr ;
+    rdfs:comment "Formation de niveau Bac+8 préparant au grade de docteur"@fr ;
+    rdfs:subClassOf ens:Formation .
+
+ens:UniteEnseignement a rdfs:Class ;
+    rdfs:label "Unité d'Enseignement"@fr ;
+    rdfs:comment "Module composant une formation"@fr .
+
+ens:Maquette a rdfs:Class ;
+    rdfs:label "Maquette de Formation"@fr ;
+    rdfs:comment "Description structurée du contenu d'une formation"@fr .
+
+# --- Recherche ---
+ens:Laboratoire a rdfs:Class ;
+    rdfs:label "Laboratoire"@fr ;
+    rdfs:comment "Structure de recherche regroupant des chercheurs"@fr .
+
+ens:ProjetRecherche a rdfs:Class ;
+    rdfs:label "Projet de Recherche"@fr ;
+    rdfs:comment "Initiative de recherche avec objectifs et financement"@fr .
+
+ens:Publication a rdfs:Class ;
+    rdfs:label "Publication Scientifique"@fr ;
+    rdfs:comment "Document publié présentant des résultats de recherche"@fr .
+
+ens:ResultatRecherche a rdfs:Class ;
+    rdfs:label "Résultat de Recherche"@fr ;
+    rdfs:comment "Produit issu d'un travail de recherche"@fr .
+
+# --- Ressources Matérielles ---
+ens:RessourceMaterielle a rdfs:Class ;
+    rdfs:label "Ressource Matérielle"@fr ;
+    rdfs:comment "Équipement ou infrastructure physique"@fr .
+
+ens:Imprimante3D a rdfs:Class ;
+    rdfs:label "Imprimante 3D"@fr ;
+    rdfs:subClassOf ens:RessourceMaterielle .
+
+ens:SuperCalculateur a rdfs:Class ;
+    rdfs:label "Super Calculateur"@fr ;
+    rdfs:subClassOf ens:RessourceMaterielle .
+
+ens:ServeurCloud a rdfs:Class ;
+    rdfs:label "Serveur Cloud"@fr ;
+    rdfs:subClassOf ens:RessourceMaterielle .
+
+ens:Incubateur a rdfs:Class ;
+    rdfs:label "Incubateur"@fr ;
+    rdfs:comment "Structure d'accompagnement de startups et projets innovants"@fr ;
+    rdfs:subClassOf ens:RessourceMaterielle .
+
+# --- Infrastructures ---
+ens:Infrastructure a rdfs:Class ;
+    rdfs:label "Infrastructure"@fr ;
+    rdfs:comment "Bâtiment ou espace au sein de l'université"@fr .
+
+ens:Batiment a rdfs:Class ;
+    rdfs:label "Bâtiment"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:SalleClasse a rdfs:Class ;
+    rdfs:label "Salle de Classe"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:Amphitheatre a rdfs:Class ;
+    rdfs:label "Amphithéâtre"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:Bureau a rdfs:Class ;
+    rdfs:label "Bureau"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:Restaurant a rdfs:Class ;
+    rdfs:label "Restaurant"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:InstallationSportiveCulturelle a rdfs:Class ;
+    rdfs:label "Installation Sportive et Culturelle"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+# =====================
+# PROPRIÉTÉS RDFS
+# =====================
+
+# --- Propriétés Enseignement ---
+ens:enseigne a rdf:Property ;
+    rdfs:label "enseigne"@fr ;
+    rdfs:comment "Relie un enseignant à une unité d'enseignement"@fr ;
+    rdfs:domain ens:Enseignant ;
+    rdfs:range ens:UniteEnseignement .
+
+ens:estEnseigneePar a rdf:Property ;
+    rdfs:label "est enseignée par"@fr ;
+    rdfs:comment "Relie une UE à son enseignant"@fr ;
+    rdfs:domain ens:UniteEnseignement ;
+    rdfs:range ens:Enseignant .
+
+# --- Propriétés Inscriptions ---
+ens:inscritDans a rdf:Property ;
+    rdfs:label "inscrit dans"@fr ;
+    rdfs:comment "Relie un étudiant à sa formation"@fr ;
+    rdfs:domain ens:Etudiant ;
+    rdfs:range ens:Formation .
+
+ens:inscritDansED a rdf:Property ;
+    rdfs:label "inscrit dans école doctorale"@fr ;
+    rdfs:comment "Relie un doctorant à son école doctorale"@fr ;
+    rdfs:domain ens:Doctorant ;
+    rdfs:range ens:EcoleDoctorale .
+
+# --- Propriétés Organisation ---
+ens:appartientA a rdf:Property ;
+    rdfs:label "appartient à"@fr ;
+    rdfs:comment "Relie un département à sa faculté"@fr ;
+    rdfs:domain ens:Departement ;
+    rdfs:range ens:Faculte .
+
+ens:offre a rdf:Property ;
+    rdfs:label "offre"@fr ;
+    rdfs:comment "Relie une faculté à une formation proposée"@fr ;
+    rdfs:domain ens:Faculte ;
+    rdfs:range ens:Formation .
+
+ens:contientUE a rdf:Property ;
+    rdfs:label "contient UE"@fr ;
+    rdfs:comment "Relie une formation à ses unités d'enseignement"@fr ;
+    rdfs:domain ens:Formation ;
+    rdfs:range ens:UniteEnseignement .
+
+ens:faitPartieDe a rdf:Property ;
+    rdfs:label "fait partie de"@fr ;
+    rdfs:comment "Relie une faculté à son université"@fr ;
+    rdfs:domain ens:Faculte ;
+    rdfs:range ens:Universite .
+
+# --- Propriétés Recherche ---
+ens:membreDe a rdf:Property ;
+    rdfs:label "membre de"@fr ;
+    rdfs:comment "Relie un chercheur à son laboratoire"@fr ;
+    rdfs:domain ens:Chercheur ;
+    rdfs:range ens:Laboratoire .
+
+ens:participeA a rdf:Property ;
+    rdfs:label "participe à"@fr ;
+    rdfs:comment "Relie un chercheur à un projet de recherche"@fr ;
+    rdfs:domain ens:Chercheur ;
+    rdfs:range ens:ProjetRecherche .
+
+ens:publie a rdf:Property ;
+    rdfs:label "publie"@fr ;
+    rdfs:comment "Relie un chercheur à une publication"@fr ;
+    rdfs:domain ens:Chercheur ;
+    rdfs:range ens:Publication .
+
+ens:dirigePar a rdf:Property ;
+    rdfs:label "dirigé par"@fr ;
+    rdfs:comment "Relie un doctorant à son directeur de thèse"@fr ;
+    rdfs:domain ens:Doctorant ;
+    rdfs:range ens:EnseignantChercheur .
+
+ens:rattacheA a rdf:Property ;
+    rdfs:label "rattaché à"@fr ;
+    rdfs:comment "Relie un laboratoire à une université"@fr ;
+    rdfs:domain ens:Laboratoire ;
+    rdfs:range ens:Universite .
+
+# --- Propriétés Métadonnées ---
+ens:nom a rdf:Property ;
+    rdfs:label "nom"@fr ;
+    rdfs:comment "Nom d'une ressource"@fr ;
+    rdfs:subPropertyOf foaf:name .
+
+ens:email a rdf:Property ;
+    rdfs:label "email"@fr ;
+    rdfs:comment "Adresse email"@fr ;
+    rdfs:domain ens:Personne ;
+    rdfs:subPropertyOf foaf:mbox .
+
+ens:titre a rdf:Property ;
+    rdfs:label "titre"@fr ;
+    rdfs:comment "Titre d'une publication ou d'une formation"@fr ;
+    rdfs:subPropertyOf dc:title .
+
+ens:dateCreation a rdf:Property ;
+    rdfs:label "date de création"@fr ;
+    rdfs:comment "Date de création de la ressource"@fr ;
+    rdfs:subPropertyOf dc:date .
+
+ens:credits a rdf:Property ;
+    rdfs:label "crédits ECTS"@fr ;
+    rdfs:comment "Nombre de crédits ECTS pour une UE ou formation"@fr ;
+    rdfs:domain ens:UniteEnseignement .
+
+ens:capacite a rdf:Property ;
+    rdfs:label "capacité"@fr ;
+    rdfs:comment "Capacité d'accueil d'une infrastructure"@fr ;
+    rdfs:domain ens:Infrastructure .
