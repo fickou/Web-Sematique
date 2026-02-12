@@ -1,0 +1,311 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ens: <http://www.ugb.sn/ressources/ens-sup.rdfs#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =============================================
+# SCHÉMA RDFS : Ressources de l'Enseignement Supérieur (Turtle)
+# Namespace: http://www.ugb.sn/ressources/ens-sup.rdfs
+# =============================================
+
+# =====================
+# CLASSES PRINCIPALES
+# =====================
+
+# --- Ressources Humaines ---
+ens:Personne a owl:Class ;
+    rdfs:label "Personne"@fr ;
+    rdfs:comment "Représente une personne impliquée dans l'enseignement supérieur"@fr ;
+    rdfs:subClassOf foaf:Person .
+
+ens:Enseignant a owl:Class ;
+    rdfs:label "Enseignant"@fr ;
+    rdfs:comment "Personne qui enseigne dans un établissement d'enseignement supérieur"@fr ;
+    owl:disjointWith ens:Etudiant, ens:PersonnelAdministratif ;
+    rdfs:subClassOf ens:Personne .
+
+ens:Chercheur a owl:Class ;
+    rdfs:label "Chercheur"@fr ;
+    rdfs:comment "Personne qui effectue des travaux de recherche"@fr ;
+    rdfs:subClassOf ens:Personne .
+
+# Un EnseignantChercheur est à la fois Enseignant et membre d’un Laboratoire
+ens:EnseignantChercheur a owl:Class ;
+    rdfs:label "Enseignant-Chercheur"@fr ;
+    rdfs:comment "Personne qui cumule les fonctions d'enseignement et de recherche"@fr ;
+    rdfs:subClassOf ens:Enseignant,
+    [
+    a owl:Restriction ;
+    owl:onProperty ens:membreDe ;
+    owl:someValuesFrom ens:Laboratoire
+    ].
+
+
+# Un étudiant est inscrit dans exactement une formation 
+ens:Etudiant a owl:Class ;
+    rdfs:label "Étudiant"@fr ;
+    rdfs:comment "Personne inscrite dans une formation de l'enseignement supérieur"@fr ;
+    owl:disjointWith ens:Enseignant, ens:PersonnelAdministratif ;
+    rdfs:subClassOf ens:Personne ,
+    [
+    a owl:Restriction ;
+    owl:onProperty ens:inscritDans ;
+    owl:mincardinality "1"^^xsd:nonNegativeInteger
+    ].
+
+ens:Doctorant a owl:Class ;
+    rdfs:label "Doctorant"@fr ;
+    rdfs:comment "Étudiant inscrit en doctorat"@fr ;
+    rdfs:subClassOf ens:Etudiant .
+
+ens:PersonnelAdministratif a owl:Class ;
+    rdfs:label "Personnel Administratif"@fr ;
+    rdfs:comment "Personnel non enseignant travaillant dans l'administration"@fr ;
+    owl:disjointWith ens:Enseignant, ens:Etudiant ;
+    rdfs:subClassOf ens:Personne .
+
+# --- Structures Académiques ---
+ens:Universite a owl:Class ;
+    rdfs:label "Université"@fr ;
+    rdfs:comment "Établissement d'enseignement supérieur et de recherche"@fr .
+
+ens:Faculte a owl:Class ;
+    rdfs:label "Faculté / UFR"@fr ;
+    rdfs:comment "Unité de Formation et de Recherche au sein d'une université"@fr .
+
+ens:EcoleDoctorale a owl:Class ;
+    rdfs:label "École Doctorale"@fr ;
+    rdfs:comment "Structure d'accueil et de formation des doctorants"@fr .
+
+ens:Departement a owl:Class ;
+    rdfs:label "Département"@fr ;
+    rdfs:comment "Division administrative au sein d'une faculté"@fr .
+
+# --- Formations ---
+# Une formation comporte au moins une UE
+ens:Formation a owl:Class ;
+    rdfs:label "Formation"@fr ;
+    rdfs:comment "Programme d'études proposé par un établissement"@fr;
+    rdfs:subClassOf[
+    a owl:Restriction ;
+    owl:onProperty ens:contientUE ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger
+    ] .
+
+ens:Licence a owl:Class ;
+    rdfs:label "Licence"@fr ;
+    rdfs:comment "Formation de niveau Bac+3"@fr ;
+    rdfs:subClassOf ens:Formation .
+
+ens:Master a owl:Class ;
+    rdfs:label "Master"@fr ;
+    rdfs:comment "Formation de niveau Bac+5"@fr ;
+    rdfs:subClassOf ens:Formation .
+
+ens:Doctorat a owl:Class ;
+    rdfs:label "Doctorat"@fr ;
+    rdfs:comment "Formation de niveau Bac+8 préparant au grade de docteur"@fr ;
+    rdfs:subClassOf ens:Formation .
+
+# Une UE est enseignée par au moins un Enseignant
+ens:UniteEnseignement a owl:Class ;
+    rdfs:label "Unité d'Enseignement"@fr ;
+    rdfs:comment "Module composant une formation"@fr;
+    rdfs:subClassOf[
+    a owl:Restriction ;
+    owl:onProperty ens:estEnseigneePar ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger
+    ] .
+
+ens:Maquette a owl:Class ;
+    rdfs:label "Maquette de Formation"@fr ;
+    rdfs:comment "Description structurée du contenu d'une formation"@fr .
+
+# --- Recherche ---
+ens:Laboratoire a owl:Class ;
+    rdfs:label "Laboratoire"@fr ;
+    rdfs:comment "Structure de recherche regroupant des chercheurs"@fr .
+
+ens:ProjetRecherche a owl:Class ;
+    rdfs:label "Projet de Recherche"@fr ;
+    rdfs:comment "Initiative de recherche avec objectifs et financement"@fr .
+
+ens:Publication a owl:Class ;
+    rdfs:label "Publication Scientifique"@fr ;
+    rdfs:comment "Document publié présentant des résultats de recherche"@fr .
+
+ens:ResultatRecherche a owl:Class ;
+    rdfs:label "Résultat de Recherche"@fr ;
+    rdfs:comment "Produit issu d'un travail de recherche"@fr .
+
+# --- Ressources Matérielles ---
+ens:RessourceMaterielle a owl:Class ;
+    rdfs:label "Ressource Matérielle"@fr ;
+    rdfs:comment "Équipement ou infrastructure physique"@fr .
+
+ens:Imprimante3D a owl:Class ;
+    rdfs:label "Imprimante 3D"@fr ;
+    rdfs:subClassOf ens:RessourceMaterielle .
+
+ens:SuperCalculateur a owl:Class ;
+    rdfs:label "Super Calculateur"@fr ;
+    rdfs:subClassOf ens:RessourceMaterielle .
+
+ens:ServeurCloud a owl:Class ;
+    rdfs:label "Serveur Cloud"@fr ;
+    rdfs:subClassOf ens:RessourceMaterielle .
+
+ens:Incubateur a owl:Class ;
+    rdfs:label "Incubateur"@fr ;
+    rdfs:comment "Structure d'accompagnement de startups et projets innovants"@fr ;
+    rdfs:subClassOf ens:RessourceMaterielle .
+
+# --- Infrastructures ---
+ens:Infrastructure a owl:Class ;
+    rdfs:label "Infrastructure"@fr ;
+    rdfs:comment "Bâtiment ou espace au sein de l'université"@fr .
+
+ens:Batiment a owl:Class ;
+    rdfs:label "Bâtiment"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:SalleClasse a owl:Class ;
+    rdfs:label "Salle de Classe"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:Amphitheatre a owl:Class ;
+    rdfs:label "Amphithéâtre"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:Bureau a owl:Class ;
+    rdfs:label "Bureau"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:Restaurant a owl:Class ;
+    rdfs:label "Restaurant"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+ens:InstallationSportiveCulturelle a owl:Class ;
+    rdfs:label "Installation Sportive et Culturelle"@fr ;
+    rdfs:subClassOf ens:Infrastructure .
+
+# =====================
+# PROPRIÉTÉS RDFS
+# =====================
+
+# --- Propriétés Enseignement ---
+ens:enseigne a owl:ObjectProperty ;
+    rdfs:label "enseigne"@fr ;
+    rdfs:comment "Relie un enseignant à une unité d'enseignement"@fr ;
+    rdfs:domain ens:Enseignant ;
+    rdfs:range ens:UniteEnseignement .
+
+ens:estEnseigneePar a owl:ObjectProperty ;
+    rdfs:label "est enseignée par"@fr ;
+    rdfs:comment "Relie une UE à son enseignant"@fr ;
+    rdfs:domain ens:UniteEnseignement ;
+    rdfs:range ens:Enseignant .
+
+# --- Propriétés Inscriptions ---
+ens:inscritDans a owl:ObjectProperty ;
+    rdfs:label "inscrit dans"@fr ;
+    rdfs:comment "Relie un étudiant à sa formation"@fr ;
+    rdfs:domain ens:Etudiant ;
+    rdfs:range ens:Formation .
+
+ens:inscritDansED a owl:ObjectProperty ;
+    rdfs:label "inscrit dans école doctorale"@fr ;
+    rdfs:comment "Relie un doctorant à son école doctorale"@fr ;
+    rdfs:domain ens:Doctorant ;
+    rdfs:range ens:EcoleDoctorale .
+
+# --- Propriétés Organisation ---
+ens:appartientA a owl:ObjectProperty ;
+    rdfs:label "appartient à"@fr ;
+    rdfs:comment "Relie un département à sa faculté"@fr ;
+    rdfs:domain ens:Departement ;
+    rdfs:range ens:Faculte .
+
+ens:offre a owl:ObjectProperty ;
+    rdfs:label "offre"@fr ;
+    rdfs:comment "Relie une faculté à une formation proposée"@fr ;
+    rdfs:domain ens:Faculte ;
+    rdfs:range ens:Formation .
+
+ens:contientUE a owl:ObjectProperty ;
+    rdfs:label "contient UE"@fr ;
+    rdfs:comment "Relie une formation à ses unités d'enseignement"@fr ;
+    rdfs:domain ens:Formation ;
+    rdfs:range ens:UniteEnseignement .
+
+ens:faitPartieDe a owl:ObjectProperty ;
+    rdfs:label "fait partie de"@fr ;
+    rdfs:comment "Relie une faculté à son université"@fr ;
+    rdfs:domain ens:Faculte ;
+    rdfs:range ens:Universite .
+
+# --- Propriétés Recherche ---
+ens:membreDe a owl:ObjectProperty ;
+    rdfs:label "membre de"@fr ;
+    rdfs:comment "Relie un chercheur à son laboratoire"@fr ;
+    rdfs:domain ens:Chercheur ;
+    rdfs:range ens:Laboratoire .
+
+ens:participeA a owl:ObjectProperty ;
+    rdfs:label "participe à"@fr ;
+    rdfs:comment "Relie un chercheur à un projet de recherche"@fr ;
+    rdfs:domain ens:Chercheur ;
+    rdfs:range ens:ProjetRecherche .
+
+ens:publie a owl:ObjectProperty ;
+    rdfs:label "publie"@fr ;
+    rdfs:comment "Relie un chercheur à une publication"@fr ;
+    rdfs:domain ens:Chercheur ;
+    rdfs:range ens:Publication .
+
+ens:dirigePar a owl:ObjectProperty ;
+    rdfs:label "dirigé par"@fr ;
+    rdfs:comment "Relie un doctorant à son directeur de thèse"@fr ;
+    rdfs:domain ens:Doctorant ;
+    rdfs:range ens:EnseignantChercheur .
+
+ens:rattacheA a owl:ObjectProperty ;
+    rdfs:label "rattaché à"@fr ;
+    rdfs:comment "Relie un laboratoire à une université"@fr ;
+    rdfs:domain ens:Laboratoire ;
+    rdfs:range ens:Universite .
+
+# --- Propriétés Métadonnées ---
+ens:nom a owl:ObjectProperty ;
+    rdfs:label "nom"@fr ;
+    rdfs:comment "Nom d'une ressource"@fr ;
+    rdfs:subPropertyOf foaf:name .
+
+ens:email a owl:ObjectProperty ;
+    rdfs:label "email"@fr ;
+    rdfs:comment "Adresse email"@fr ;
+    rdfs:domain ens:Personne ;
+    rdfs:subPropertyOf foaf:mbox .
+
+ens:titre a owl:ObjectProperty ;
+    rdfs:label "titre"@fr ;
+    rdfs:comment "Titre d'une publication ou d'une formation"@fr ;
+    rdfs:subPropertyOf dc:title .
+
+ens:dateCreation a owl:ObjectProperty ;
+    rdfs:label "date de création"@fr ;
+    rdfs:comment "Date de création de la ressource"@fr ;
+    rdfs:subPropertyOf dc:date .
+
+ens:credits a owl:ObjectProperty ;
+    rdfs:label "crédits ECTS"@fr ;
+    rdfs:comment "Nombre de crédits ECTS pour une UE ou formation"@fr ;
+    rdfs:domain ens:UniteEnseignement .
+
+ens:capacite a owl:ObjectProperty ;
+    rdfs:label "capacité"@fr ;
+    rdfs:comment "Capacité d'accueil d'une infrastructure"@fr ;
+    rdfs:domain ens:Infrastructure .
