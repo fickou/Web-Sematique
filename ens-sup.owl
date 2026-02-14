@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:ens="http://www.ugb.sn/ressources/ens-sup.owl#"
+    xml:base="http://www.ugb.sn/ressources/ens-sup.owl">
+
+    <!-- Déclaration de l'ontologie -->
+    <owl:Ontology rdf:about=""/>
+
+    <!-- ============================= -->
+    <!-- CLASSES OWL -->
+    <!-- ============================= -->
+
+    <owl:Class rdf:about="#Personne"/>
+    <owl:Class rdf:about="#Enseignant">
+        <rdfs:subClassOf rdf:resource="#Personne"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Etudiant">
+        <rdfs:subClassOf rdf:resource="#Personne"/>
+
+        <!-- Etudiant inscrit dans au moins une Formation -->
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#inscritDans"/>
+                <owl:someValuesFrom rdf:resource="#Formation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <!-- Etudiant inscrit dans exactement 1 Formation principale -->
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#inscritDans"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="#Formation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+    </owl:Class>
+
+    <owl:Class rdf:about="#Laboratoire"/>
+
+    <owl:Class rdf:about="#EnseignantChercheur">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Enseignant"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#membreDe"/>
+                        <owl:someValuesFrom rdf:resource="#Laboratoire"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Formation">
+        <!-- Une formation contient au moins une UE -->
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#contientUE"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="#UniteEnseignement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="#UniteEnseignement">
+        <!-- Une UE est enseignée par au moins un Enseignant -->
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#estEnseigneePar"/>
+                <owl:someValuesFrom rdf:resource="#Enseignant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <!-- ============================= -->
+    <!-- CLASSES DISJOINTES -->
+    <!-- ============================= -->
+
+    <owl:AllDisjointClasses>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Etudiant"/>
+            <rdf:Description rdf:about="#Enseignant"/>
+        </owl:members>
+    </owl:AllDisjointClasses>
+
+    <!-- ============================= -->
+    <!-- PROPRIÉTÉS OWL -->
+    <!-- ============================= -->
+
+    <owl:ObjectProperty rdf:about="#inscritDans">
+        <rdfs:domain rdf:resource="#Etudiant"/>
+        <rdfs:range rdf:resource="#Formation"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#estEnseigneePar">
+        <rdfs:domain rdf:resource="#UniteEnseignement"/>
+        <rdfs:range rdf:resource="#Enseignant"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#membreDe">
+        <rdfs:domain rdf:resource="#Enseignant"/>
+        <rdfs:range rdf:resource="#Laboratoire"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#contientUE">
+        <rdfs:domain rdf:resource="#Formation"/>
+        <rdfs:range rdf:resource="#UniteEnseignement"/>
+    </owl:ObjectProperty>
+
+</rdf:RDF>
