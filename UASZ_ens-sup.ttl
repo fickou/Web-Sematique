@@ -1,0 +1,237 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ens: <http://www.ugb.sn/ressources/ens-sup.rdfs#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix uasz: <http://www.ugb.sn/ressources/UASZ#> .
+
+# =============================================
+# JEU DE DONNÉES RDF : Université Assane Seck de Ziguinchor (Turtle)
+# =============================================
+
+# =====================
+# UNIVERSITÉ
+# =====================
+
+uasz:UASZ a ens:Universite ;
+    ens:nom "Université Assane Seck de Ziguinchor" ;
+    rdfs:label "Université Assane Seck de Ziguinchor"@fr ;
+    ens:dateCreation "2007-01-01" .
+
+# =====================
+# FACULTÉS / UFR
+# =====================
+
+uasz:UFR_ST a ens:Faculte ;
+    ens:nom "UFR des Sciences et Technologies" ;
+    ens:faitPartieDe uasz:UASZ ;
+    ens:offre uasz:Licence_Math, uasz:Master_IA, uasz:Doctorat_Math .
+
+uasz:UFR_SJPEG a ens:Faculte ;
+    ens:nom "UFR des Sciences Juridiques, Politiques, Économiques et de Gestion" ;
+    ens:faitPartieDe uasz:UASZ ;
+    ens:offre uasz:Licence_Droit .
+
+# =====================
+# ÉCOLE DOCTORALE
+# =====================
+
+uasz:ED_UASZ a ens:EcoleDoctorale ;
+    ens:nom "École Doctorale de l'UASZ" ;
+    rdfs:label "ED Pluridisciplinaire UASZ"@fr .
+
+# =====================
+# DÉPARTEMENTS
+# =====================
+
+uasz:Dept_Info_UASZ a ens:Departement ;
+    ens:nom "Département d'Informatique" ;
+    ens:appartientA uasz:UFR_ST .
+
+uasz:Dept_Math_UASZ a ens:Departement ;
+    ens:nom "Département de Mathématiques" ;
+    ens:appartientA uasz:UFR_ST .
+
+# =====================
+# FORMATIONS
+# =====================
+
+uasz:Licence_Math a ens:Licence ;
+    ens:nom "Licence Mathématiques Appliquées" ;
+    ens:titre "Licence en Mathématiques Appliquées" ;
+    ens:contientUE uasz:UE_AnalyseNum, uasz:UE_Proba .
+
+uasz:Master_IA a ens:Master ;
+    ens:nom "Master Intelligence Artificielle" ;
+    ens:titre "Master en Intelligence Artificielle" ;
+    ens:contientUE uasz:UE_ML, uasz:UE_NLP .
+
+uasz:Doctorat_Math a ens:Doctorat ;
+    ens:nom "Doctorat en Mathématiques" ;
+    ens:titre "Doctorat en Mathématiques Fondamentales et Appliquées" ;
+    ens:contientUE uasz:UE_AnalyseNum .
+
+uasz:Licence_Droit a ens:Licence ;
+    ens:nom "Licence en Droit" ;
+    ens:titre "Licence en Droit Privé" ;
+    ens:contientUE uasz:UE_DroitCivil .
+
+# =====================
+# UNITÉS D'ENSEIGNEMENT
+# =====================
+
+uasz:UE_AnalyseNum a ens:UniteEnseignement ;
+    ens:nom "Analyse Numérique" ;
+    ens:titre "Analyse Numérique et Optimisation" ;
+    ens:credits "5"^^xsd:integer ;
+    ens:estEnseigneePar uasz:Prof_Cisse .
+
+uasz:UE_Proba a ens:UniteEnseignement ;
+    ens:nom "Probabilités et Statistiques" ;
+    ens:titre "Probabilités et Statistiques Avancées" ;
+    ens:credits "4"^^xsd:integer ;
+    ens:estEnseigneePar uasz:Prof_Diallo .
+
+uasz:UE_ML a ens:UniteEnseignement ;
+    ens:nom "Machine Learning" ;
+    ens:titre "Apprentissage Automatique" ;
+    ens:credits "6"^^xsd:integer ;
+    ens:estEnseigneePar uasz:Prof_Cisse .
+
+uasz:UE_NLP a ens:UniteEnseignement ;
+    ens:nom "Traitement du Langage Naturel" ;
+    ens:titre "NLP et Text Mining" ;
+    ens:credits "4"^^xsd:integer ;
+    ens:estEnseigneePar uasz:Prof_Mbaye .
+
+uasz:UE_DroitCivil a ens:UniteEnseignement ;
+    ens:nom "Droit Civil" ;
+    ens:titre "Introduction au Droit Civil" ;
+    ens:credits "5"^^xsd:integer ;
+    ens:estEnseigneePar uasz:Prof_Sane .
+
+# =====================
+# LABORATOIRE
+# =====================
+
+uasz:LIRIMA a ens:Laboratoire ;
+    ens:nom "Laboratoire d'Informatique et de Recherche en IA" ;
+    rdfs:label "LIRIMA - UASZ"@fr ;
+    ens:rattacheA uasz:UASZ .
+
+# =====================
+# PROJET DE RECHERCHE
+# =====================
+
+uasz:Projet_IA_Sante a ens:ProjetRecherche ;
+    ens:nom "IA pour la Santé en Afrique de l'Ouest" ;
+    ens:titre "Projet IA Santé" ;
+    ens:dateCreation "2023-09-01" .
+
+# =====================
+# PUBLICATIONS
+# =====================
+
+uasz:Pub_Cisse_2024 a ens:Publication ;
+    ens:titre "Deep Learning pour le diagnostic médical" ;
+    dc:date "2024-03-10" ;
+    dc:title "Deep Learning pour le diagnostic médical" .
+
+uasz:Pub_Diallo_2023 a ens:Publication ;
+    ens:titre "Modèles probabilistes pour la prévision climatique" ;
+    dc:date "2023-08-22" ;
+    dc:title "Modèles probabilistes pour la prévision climatique" .
+
+# =====================
+# ENSEIGNANTS
+# =====================
+
+# Prof Cissé : Enseignant + membreDe LIRIMA
+# => Avec OWL, il sera inféré comme EnseignantChercheur
+uasz:Prof_Cisse a ens:Enseignant ;
+    ens:nom "Abdoulaye Cissé" ;
+    foaf:name "Abdoulaye Cissé" ;
+    ens:email "abdoulaye.cisse@uasz.edu.sn" ;
+    foaf:mbox "mailto:abdoulaye.cisse@uasz.edu.sn" ;
+    ens:enseigne uasz:UE_AnalyseNum, uasz:UE_ML ;
+    ens:membreDe uasz:LIRIMA ;
+    ens:participeA uasz:Projet_IA_Sante ;
+    ens:publie uasz:Pub_Cisse_2024 .
+
+uasz:Prof_Diallo a ens:Enseignant ;
+    ens:nom "Mamadou Diallo" ;
+    foaf:name "Mamadou Diallo" ;
+    ens:email "mamadou.diallo@uasz.edu.sn" ;
+    foaf:mbox "mailto:mamadou.diallo@uasz.edu.sn" ;
+    ens:enseigne uasz:UE_Proba ;
+    ens:membreDe uasz:LIRIMA ;
+    ens:publie uasz:Pub_Diallo_2023 .
+
+# Prof Mbaye : Enseignant pur (pas membre d'un labo)
+uasz:Prof_Mbaye a ens:Enseignant ;
+    ens:nom "Khady Mbaye" ;
+    foaf:name "Khady Mbaye" ;
+    ens:email "khady.mbaye@uasz.edu.sn" ;
+    foaf:mbox "mailto:khady.mbaye@uasz.edu.sn" ;
+    ens:enseigne uasz:UE_NLP .
+
+uasz:Prof_Sane a ens:Enseignant ;
+    ens:nom "Papa Sané" ;
+    foaf:name "Papa Sané" ;
+    ens:email "papa.sane@uasz.edu.sn" ;
+    foaf:mbox "mailto:papa.sane@uasz.edu.sn" ;
+    ens:enseigne uasz:UE_DroitCivil .
+
+# =====================
+# ÉTUDIANTS
+# =====================
+
+uasz:Etu_Diouf a ens:Etudiant ;
+    ens:nom "Cheikh Diouf" ;
+    foaf:name "Cheikh Diouf" ;
+    ens:email "cheikh.diouf@uasz.edu.sn" ;
+    ens:inscritDans uasz:Master_IA .
+
+uasz:Etu_Mendy a ens:Etudiant ;
+    ens:nom "Bineta Mendy" ;
+    foaf:name "Bineta Mendy" ;
+    ens:email "bineta.mendy@uasz.edu.sn" ;
+    ens:inscritDans uasz:Licence_Math .
+
+# =====================
+# DOCTORANT
+# =====================
+
+uasz:Doc_Badji a ens:Doctorant ;
+    ens:nom "Lamine Badji" ;
+    foaf:name "Lamine Badji" ;
+    ens:email "lamine.badji@uasz.edu.sn" ;
+    ens:inscritDans uasz:Doctorat_Math ;
+    ens:inscritDansED uasz:ED_UASZ ;
+    ens:dirigePar uasz:Prof_Cisse .
+
+# =====================
+# PERSONNEL ADMINISTRATIF
+# =====================
+
+uasz:Admin_Faye a ens:PersonnelAdministratif ;
+    ens:nom "Awa Faye" ;
+    foaf:name "Awa Faye" ;
+    ens:email "awa.faye@uasz.edu.sn" .
+
+# =====================
+# INFRASTRUCTURES
+# =====================
+
+uasz:Amphi_Central a ens:Amphitheatre ;
+    ens:nom "Amphithéâtre Central" ;
+    ens:capacite "400"^^xsd:integer .
+
+uasz:Salle_TP_Info a ens:SalleClasse ;
+    ens:nom "Salle TP Informatique" ;
+    ens:capacite "30"^^xsd:integer .
+
+uasz:Resto_U_UASZ a ens:Restaurant ;
+    ens:nom "Restaurant Universitaire UASZ" ;
+    ens:capacite "300"^^xsd:integer .

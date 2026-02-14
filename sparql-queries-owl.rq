@@ -1,0 +1,212 @@
+# =============================================
+# REQUÊTES SPARQL SUR LES FAITS + ONTOLOGIE OWL
+# (Avec chargement de l'ontologie OWL - Avec inférence)
+# =============================================
+# Ces requêtes sont à exécuter après avoir chargé :
+# 1. Les fichiers de données RDF (ex: UGB_ens-sup.ttl)
+# 2. L'ontologie OWL (ens-sup-owl.ttl)
+# Le moteur d'inférence exploite les axiomes OWL pour déduire
+# de nouveaux faits (rdfs:subClassOf, owl:equivalentClass, etc.)
+# =============================================
+
+PREFIX ens: <http://www.ugb.sn/ressources/ens-sup.rdfs#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ugb: <http://www.ugb.sn/ressources/UGB#>
+PREFIX uasz: <http://www.ugb.sn/ressources/UASZ#>
+
+# -----------------------------------------------
+# REQUÊTE 1 : Retrouver les EnseignantChercheurs par INFÉRENCE
+# -----------------------------------------------
+# Dans l'ontologie OWL :
+#   EnseignantChercheur ≡ Enseignant ⊓ ∃ membreDe.Laboratoire
+#
+# Sans inférence : 0 résultat (personne n'est typé EnseignantChercheur)
+# AVEC inférence : Prof_Diop, Prof_Ndiaye (UGB), Prof_Cisse,
+#                  Prof_Diallo (UASZ) car ils sont Enseignant ET membreDe un Laboratoire
+# -----------------------------------------------
+
+SELECT ?ec ?nomEC ?labo ?nomLabo
+WHERE {
+  ?ec a ens:EnseignantChercheur .
+  ?ec ens:nom ?nomEC .
+  ?ec ens:membreDe ?labo .
+  ?labo ens:nom ?nomLabo .
+}
+ORDER BY ?nomEC
+
+# -----------------------------------------------
+# REQUÊTE 2 : Retrouver TOUTES les Personnes par INFÉRENCE
+# -----------------------------------------------
+# Dans le schéma RDFS :
+#   Enseignant rdfs:subClassOf Personne
+#   Etudiant rdfs:subClassOf Personne
+#   PersonnelAdministratif rdfs:subClassOf Personne
+#
+# Sans inférence : 0 résultat
+# AVEC inférence : Tous les enseignants, étudiants, doctorants,
+#                  et personnel administratif sont inférés comme Personnes
+# -----------------------------------------------
+
+SELECT ?personne ?nomPersonne ?type
+WHERE {
+  ?personne a ens:Personne .
+  ?personne ens:nom ?nomPersonne .
+  ?personne a ?type .
+  FILTER(?type != ens:Personne && ?type != owl:NamedIndividual)
+}
+ORDER BY ?nomPersonne
+
+# -----------------------------------------------
+# REQUÊTE 3 : Trouver TOUS les étudiants (y compris les Doctorants)
+# -----------------------------------------------
+# Dans le schéma RDFS :
+#   Doctorant rdfs:subClassOf Etudiant
+#
+# Sans inférence : seuls les individus typés ens:Etudiant
+# AVEC inférence : les Doctorants sont aussi retournés comme Etudiants
+# -----------------------------------------------
+
+SELECT ?etudiant ?nomEtu ?formation ?nomFormation ?type
+WHERE {
+  ?etudiant a ens:Etudiant .
+  ?etudiant ens:nom ?nomEtu .
+  ?etudiant ens:inscritDans ?formation .
+  ?formation ens:nom ?nomFormation .
+  ?etudiant a ?type .
+  FILTER(?type = ens:Etudiant || ?type = ens:Doctorant)
+}
+ORDER BY ?nomEtu
+
+# -----------------------------------------------
+# REQUÊTE 4 : Retrouver toutes les Formations (Licence, Master, Doctorat)
+# -----------------------------------------------
+# Dans le schéma RDFS :
+#   Licence rdfs:subClassOf Formation
+#   Master rdfs:subClassOf Formation
+#   Doctorat rdfs:subClassOf Formation
+#
+# AVEC inférence : toutes les Licences, Masters et Doctorats
+# sont aussi des Formations
+# -----------------------------------------------
+
+SELECT ?formation ?nomFormation ?typeFormation
+WHERE {
+  ?formation a ens:Formation .
+  ?formation ens:nom ?nomFormation .
+  ?formation a ?typeFormation .
+  FILTER(?typeFormation != ens:Formation && ?typeFormation != owl:NamedIndividual)
+}
+ORDER BY ?typeFormation ?nomFormation
+
+# -----------------------------------------------
+# REQUÊTE 5 : Exploiter l'alignement FOAF via INFÉRENCE
+# -----------------------------------------------
+# Dans le schéma RDFS :
+#   ens:Personne rdfs:subClassOf foaf:Person
+#   ens:nom rdfs:subPropertyOf foaf:name
+#
+# AVEC inférence : on peut interroger avec le vocabulaire FOAF
+# et retrouver les individus décrits avec le vocabulaire ens:
+# -----------------------------------------------
+
+SELECT ?person ?name ?mbox
+WHERE {
+  ?person a foaf:Person .
+  ?person foaf:name ?name .
+  OPTIONAL { ?person foaf:mbox ?mbox }
+}
+ORDER BY ?name
+
+# -----------------------------------------------
+# REQUÊTE 6 : Exploiter l'alignement Dublin Core via INFÉRENCE
+# -----------------------------------------------
+# Dans le schéma RDFS :
+#   ens:titre rdfs:subPropertyOf dc:title
+#   ens:dateCreation rdfs:subPropertyOf dc:date
+#
+# AVEC inférence : on retrouve les publications avec dc:title
+# même si elles n'ont été décrites qu'avec ens:titre
+# -----------------------------------------------
+
+SELECT ?ressource ?titre ?date
+WHERE {
+  ?ressource dc:title ?titre .
+  OPTIONAL { ?ressource dc:date ?date }
+}
+ORDER BY ?titre
+
+# -----------------------------------------------
+# REQUÊTE 7 : Vérifier la disjonction Etudiant / Enseignant
+# -----------------------------------------------
+# Dans l'ontologie OWL :
+#   Etudiant ⊓ Enseignant ⊑ ⊥
+#
+# AVEC inférence : cette requête ne devrait retourner AUCUN résultat
+# Si un individu était à la fois Etudiant et Enseignant, il y aurait
+# une incohérence détectée par le raisonneur
+# -----------------------------------------------
+
+SELECT ?individu ?nom
+WHERE {
+  ?individu a ens:Etudiant .
+  ?individu a ens:Enseignant .
+  ?individu ens:nom ?nom .
+}
+
+# -----------------------------------------------
+# REQUÊTE 8 : Chercheurs qui sont aussi EnseignantChercheurs (via inférence)
+# -----------------------------------------------
+# EnseignantChercheur rdfs:subClassOf Enseignant et Chercheur
+# Les Enseignants membres d'un Labo sont inférés EnseignantChercheurs
+# qui sont eux-mêmes inférés Chercheurs
+# -----------------------------------------------
+
+SELECT ?chercheur ?nomChercheur ?publication ?titrePub
+WHERE {
+  ?chercheur a ens:Chercheur .
+  ?chercheur ens:nom ?nomChercheur .
+  OPTIONAL {
+    ?chercheur ens:publie ?publication .
+    ?publication ens:titre ?titrePub .
+  }
+}
+ORDER BY ?nomChercheur
+
+# -----------------------------------------------
+# REQUÊTE 9 : Comparer les types inférés d'un individu
+# -----------------------------------------------
+# Montre TOUS les types inférés pour chaque individu
+# Ex: Prof_Diop sera : Enseignant, EnseignantChercheur,
+#     Chercheur, Personne, foaf:Person
+# -----------------------------------------------
+
+SELECT ?individu ?nomIndividu ?type
+WHERE {
+  ?individu ens:nom ?nomIndividu .
+  ?individu a ?type .
+  FILTER(STRSTARTS(STR(?type), "http://www.ugb.sn/") || 
+         STRSTARTS(STR(?type), "http://xmlns.com/foaf/"))
+}
+ORDER BY ?nomIndividu ?type
+
+# -----------------------------------------------
+# REQUÊTE 10 : Toutes les infrastructures via la hiérarchie de classes
+# -----------------------------------------------
+# Infrastructure est la superclasse de Amphitheatre, SalleClasse,
+# Bureau, Restaurant, etc.
+# AVEC inférence : toutes les sous-classes sont retournées
+# -----------------------------------------------
+
+SELECT ?infra ?nomInfra ?typeSpecifique ?capacite
+WHERE {
+  ?infra a ens:Infrastructure .
+  ?infra ens:nom ?nomInfra .
+  ?infra a ?typeSpecifique .
+  OPTIONAL { ?infra ens:capacite ?capacite }
+  FILTER(?typeSpecifique != ens:Infrastructure && ?typeSpecifique != owl:NamedIndividual)
+}
+ORDER BY ?typeSpecifique ?nomInfra

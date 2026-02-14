@@ -1,0 +1,157 @@
+# =============================================
+# REQUÊTES SPARQL SUR LES FAITS UNIQUEMENT
+# (Sans chargement de l'ontologie OWL - Pas d'inférence)
+# =============================================
+# Ces requêtes sont à exécuter après avoir chargé UNIQUEMENT
+# les fichiers de données RDF (ex: UGB_ens-sup.ttl)
+# sans l'ontologie ens-sup-owl.ttl
+# =============================================
+
+PREFIX ens: <http://www.ugb.sn/ressources/ens-sup.rdfs#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ugb: <http://www.ugb.sn/ressources/UGB#>
+PREFIX uasz: <http://www.ugb.sn/ressources/UASZ#>
+
+# -----------------------------------------------
+# REQUÊTE 1 : Lister tous les enseignants et les UE qu'ils enseignent
+# -----------------------------------------------
+# Résultat attendu : Tous les enseignants déclarés explicitement
+# avec rdf:type ens:Enseignant et leurs UE associées.
+# -----------------------------------------------
+
+SELECT ?enseignant ?nomEnseignant ?ue ?nomUE
+WHERE {
+  ?enseignant a ens:Enseignant .
+  ?enseignant ens:nom ?nomEnseignant .
+  ?enseignant ens:enseigne ?ue .
+  ?ue ens:nom ?nomUE .
+}
+ORDER BY ?nomEnseignant
+
+# -----------------------------------------------
+# REQUÊTE 2 : Trouver les étudiants inscrits dans chaque formation
+# -----------------------------------------------
+# Résultat attendu : Couples (étudiant, formation)
+# NOTE : Sans inférence, seuls les étudiants déclarés explicitement
+# comme ens:Etudiant apparaissent (pas les Doctorants sauf s'ils
+# sont aussi typés Etudiant explicitement).
+# -----------------------------------------------
+
+SELECT ?etudiant ?nomEtu ?formation ?nomFormation
+WHERE {
+  ?etudiant a ens:Etudiant .
+  ?etudiant ens:nom ?nomEtu .
+  ?etudiant ens:inscritDans ?formation .
+  ?formation ens:nom ?nomFormation .
+}
+ORDER BY ?nomFormation
+
+# -----------------------------------------------
+# REQUÊTE 3 : Lister les laboratoires, leur université et leurs membres
+# -----------------------------------------------
+
+SELECT ?labo ?nomLabo ?universite ?nomUniv ?membre ?nomMembre
+WHERE {
+  ?labo a ens:Laboratoire .
+  ?labo ens:nom ?nomLabo .
+  ?labo ens:rattacheA ?universite .
+  ?universite ens:nom ?nomUniv .
+  ?membre ens:membreDe ?labo .
+  ?membre ens:nom ?nomMembre .
+}
+ORDER BY ?nomLabo ?nomMembre
+
+# -----------------------------------------------
+# REQUÊTE 4 : Trouver les publications de chaque chercheur
+# -----------------------------------------------
+
+SELECT ?chercheur ?nomChercheur ?publication ?titrePub
+WHERE {
+  ?chercheur ens:publie ?publication .
+  ?chercheur ens:nom ?nomChercheur .
+  ?publication ens:titre ?titrePub .
+}
+ORDER BY ?nomChercheur
+
+# -----------------------------------------------
+# REQUÊTE 5 : Lister les formations offertes par chaque faculté
+# -----------------------------------------------
+
+SELECT ?faculte ?nomFaculte ?formation ?nomFormation
+WHERE {
+  ?faculte a ens:Faculte .
+  ?faculte ens:nom ?nomFaculte .
+  ?faculte ens:offre ?formation .
+  ?formation ens:nom ?nomFormation .
+}
+ORDER BY ?nomFaculte ?nomFormation
+
+# -----------------------------------------------
+# REQUÊTE 6 : Trouver les EnseignantChercheurs déclarés EXPLICITEMENT
+# -----------------------------------------------
+# Résultat attendu SANS inférence : AUCUN résultat car personne
+# n'est déclaré avec rdf:type ens:EnseignantChercheur dans les données.
+# Les enseignants sont typés ens:Enseignant uniquement.
+# -----------------------------------------------
+
+SELECT ?ec ?nomEC
+WHERE {
+  ?ec a ens:EnseignantChercheur .
+  ?ec ens:nom ?nomEC .
+}
+
+# -----------------------------------------------
+# REQUÊTE 7 : Lister toutes les Personnes
+# -----------------------------------------------
+# Résultat attendu SANS inférence : AUCUN résultat car personne
+# n'est déclaré directement avec rdf:type ens:Personne.
+# Les individus sont typés comme Enseignant, Etudiant, etc.
+# -----------------------------------------------
+
+SELECT ?personne ?nomPersonne
+WHERE {
+  ?personne a ens:Personne .
+  ?personne ens:nom ?nomPersonne .
+}
+
+# -----------------------------------------------
+# REQUÊTE 8 : Trouver les doctorants et leurs directeurs de thèse
+# -----------------------------------------------
+
+SELECT ?doctorant ?nomDoc ?directeur ?nomDir ?ecoleDoctorale ?nomED
+WHERE {
+  ?doctorant a ens:Doctorant .
+  ?doctorant ens:nom ?nomDoc .
+  ?doctorant ens:dirigePar ?directeur .
+  ?directeur ens:nom ?nomDir .
+  ?doctorant ens:inscritDansED ?ecoleDoctorale .
+  ?ecoleDoctorale ens:nom ?nomED .
+}
+
+# -----------------------------------------------
+# REQUÊTE 9 : Lister les infrastructures et leur capacité
+# -----------------------------------------------
+
+SELECT ?infra ?nomInfra ?typeInfra ?capacite
+WHERE {
+  ?infra ens:capacite ?capacite .
+  ?infra ens:nom ?nomInfra .
+  ?infra a ?typeInfra .
+  FILTER(?typeInfra != rdfs:Resource)
+}
+ORDER BY DESC(?capacite)
+
+# -----------------------------------------------
+# REQUÊTE 10 : Compter le nombre d'UE par formation
+# -----------------------------------------------
+
+SELECT ?formation ?nomFormation (COUNT(?ue) AS ?nbUE)
+WHERE {
+  ?formation ens:contientUE ?ue .
+  ?formation ens:nom ?nomFormation .
+}
+GROUP BY ?formation ?nomFormation
+ORDER BY DESC(?nbUE)
