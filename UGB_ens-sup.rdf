@@ -7,18 +7,18 @@
          xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
          xml:base="http://www.ugb.sn/ressources/UGB">
 
-  <!-- ============================= -->
-  <!-- UNIVERSITÉ GASTON BERGER      -->
-  <!-- ============================= -->
+  
+  <!-- UGB     -->
+  
 
-  <!-- 1. Université -->
+  <!--  Université -->
   <ens:Universite rdf:ID="UGB">
     <ens:nom>Université Gaston Berger</ens:nom>
     <rdfs:label xml:lang="fr">Université Gaston Berger de Saint-Louis</rdfs:label>
     <ens:dateCreation>1990-01-01</ens:dateCreation>
   </ens:Universite>
 
-  <!-- 2-3. Facultés / UFR -->
+  <!-- Facultés / UFR -->
   <ens:Faculte rdf:ID="UFR_SAT">
     <ens:nom>UFR de Sciences Appliquées et de Technologie</ens:nom>
     <ens:faitPartieDe rdf:resource="#UGB"/>
@@ -29,13 +29,13 @@
     <ens:faitPartieDe rdf:resource="#UGB"/>
   </ens:Faculte>
 
-  <!-- 4. École Doctorale -->
+  <!--  École Doctorale -->
   <ens:EcoleDoctorale rdf:ID="ED_SEV">
     <ens:nom>École Doctorale Sciences et Technologies</ens:nom>
     <rdfs:label xml:lang="fr">ED Sciences, Technologies et Environnement</rdfs:label>
   </ens:EcoleDoctorale>
 
-  <!-- 5-6. Départements -->
+  <!--  Départements -->
   <ens:Departement rdf:ID="Dept_Informatique">
     <ens:nom>Département d'Informatique</ens:nom>
     <ens:appartientA rdf:resource="#UFR_SAT"/>
@@ -46,7 +46,7 @@
     <ens:appartientA rdf:resource="#UFR_SAT"/>
   </ens:Departement>
 
-  <!-- 7-9. Formations -->
+  <!--  Formations -->
   <ens:Licence rdf:ID="Licence_Info">
     <ens:nom>Licence Informatique</ens:nom>
     <ens:titre>Licence en Informatique</ens:titre>
@@ -67,6 +67,8 @@
     <ens:contientUE rdf:resource="#UE_WebSem"/>
   </ens:Doctorat>
 
+  
+
   <!-- Lien Faculté -> Formations -->
   <rdf:Description rdf:about="#UFR_SAT">
     <ens:offre rdf:resource="#Licence_Info"/>
@@ -74,7 +76,7 @@
     <ens:offre rdf:resource="#Doctorat_Info"/>
   </rdf:Description>
 
-  <!-- 10-12. Unités d'Enseignement -->
+  <!--  Unités d'Enseignement -->
   <ens:UniteEnseignement rdf:ID="UE_WebSem">
     <ens:nom>Web Sémantique</ens:nom>
     <ens:titre>Web Sémantique et Ontologies</ens:titre>
@@ -96,21 +98,21 @@
     <ens:estEnseigneePar rdf:resource="#Prof_Ba"/>
   </ens:UniteEnseignement>
 
-  <!-- 13. Laboratoire -->
+  <!--  Laboratoire -->
   <ens:Laboratoire rdf:ID="LANI">
     <ens:nom>Laboratoire d'Analyse Numérique et d'Informatique</ens:nom>
     <rdfs:label xml:lang="fr">LANI - UGB</rdfs:label>
     <ens:rattacheA rdf:resource="#UGB"/>
   </ens:Laboratoire>
 
-  <!-- 14. Projet de Recherche -->
+  <!--  Projet de Recherche -->
   <ens:ProjetRecherche rdf:ID="Projet_WebSemUGB">
     <ens:nom>Modélisation Sémantique des Ressources Universitaires</ens:nom>
     <ens:titre>Projet Web Sémantique UGB</ens:titre>
     <ens:dateCreation>2024-01-15</ens:dateCreation>
   </ens:ProjetRecherche>
 
-  <!-- 15-16. Publications -->
+  <!-- Publications -->
   <ens:Publication rdf:ID="Pub_Diop_2024">
     <ens:titre>Ontologies pour l'enseignement supérieur en Afrique</ens:titre>
     <dc:date>2024-06-15</dc:date>
@@ -123,7 +125,7 @@
     <dc:title>Bases de données distribuées pour les universités</dc:title>
   </ens:Publication>
 
-  <!-- 17-19. Enseignants / EnseignantChercheurs -->
+  <!--  Enseignants / EnseignantChercheurs -->
   <!-- Prof Diop : Enseignant qui est aussi membreDe LANI => inféré EnseignantChercheur via OWL -->
   <ens:Enseignant rdf:ID="Prof_Diop">
     <ens:nom>Moussa Diop</ens:nom>
@@ -154,7 +156,7 @@
     <ens:enseigne rdf:resource="#UE_Algo"/>
   </ens:Enseignant>
 
-  <!-- 20-22. Étudiants -->
+  <!--  Étudiants -->
   <ens:Etudiant rdf:ID="Etu_Fall">
     <ens:nom>Amadou Fall</ens:nom>
     <foaf:name>Amadou Fall</foaf:name>
@@ -169,7 +171,7 @@
     <ens:inscritDans rdf:resource="#Licence_Info"/>
   </ens:Etudiant>
 
-  <!-- 23. Doctorant -->
+  <!--  Doctorant -->
   <ens:Doctorant rdf:ID="Doc_Gueye">
     <ens:nom>Ousmane Gueye</ens:nom>
     <foaf:name>Ousmane Gueye</foaf:name>
@@ -179,14 +181,14 @@
     <ens:dirigePar rdf:resource="#Prof_Diop"/>
   </ens:Doctorant>
 
-  <!-- 24. Personnel Administratif -->
+  <!--  Personnel Administratif -->
   <ens:PersonnelAdministratif rdf:ID="Admin_Sarr">
     <ens:nom>Mariama Sarr</ens:nom>
     <foaf:name>Mariama Sarr</foaf:name>
     <ens:email>mariama.sarr@ugb.edu.sn</ens:email>
   </ens:PersonnelAdministratif>
 
-  <!-- 25-27. Infrastructures -->
+  <!-- Infrastructures -->
   <ens:Amphitheatre rdf:ID="Amphi_A">
     <ens:nom>Amphithéâtre A</ens:nom>
     <ens:capacite rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</ens:capacite>

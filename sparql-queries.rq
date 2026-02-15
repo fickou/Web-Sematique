@@ -22,6 +22,9 @@ PREFIX uasz: <http://www.ugb.sn/ressources/UASZ#>
 # avec rdf:type ens:Enseignant et leurs UE associées.
 # -----------------------------------------------
 
+
+# REQUÊTE 1 : Lister tous les enseignants et les UE qu'ils enseignent
+
 SELECT ?enseignant ?nomEnseignant ?ue ?nomUE
 WHERE {
   ?enseignant a ens:Enseignant .
@@ -39,6 +42,9 @@ ORDER BY ?nomEnseignant
 # comme ens:Etudiant apparaissent (pas les Doctorants sauf s'ils
 # sont aussi typés Etudiant explicitement).
 # -----------------------------------------------
+
+
+# REQUÊTE 2 : Trouver les étudiants inscrits dans chaque formation
 
 SELECT ?etudiant ?nomEtu ?formation ?nomFormation
 WHERE {
@@ -97,6 +103,9 @@ ORDER BY ?nomFaculte ?nomFormation
 # Les enseignants sont typés ens:Enseignant uniquement.
 # -----------------------------------------------
 
+
+# REQUÊTE 3 : Trouver les EnseignantChercheurs déclarés EXPLICITEMENT
+
 SELECT ?ec ?nomEC
 WHERE {
   ?ec a ens:EnseignantChercheur .
@@ -111,6 +120,9 @@ WHERE {
 # Les individus sont typés comme Enseignant, Etudiant, etc.
 # -----------------------------------------------
 
+
+# REQUÊTE 5 : Lister toutes les Personnes
+
 SELECT ?personne ?nomPersonne
 WHERE {
   ?personne a ens:Personne .
@@ -120,6 +132,8 @@ WHERE {
 # -----------------------------------------------
 # REQUÊTE 8 : Trouver les doctorants et leurs directeurs de thèse
 # -----------------------------------------------
+
+# REQUÊTE 4 : Trouver les doctorants et leurs directeurs de thèse
 
 SELECT ?doctorant ?nomDoc ?directeur ?nomDir ?ecoleDoctorale ?nomED
 WHERE {

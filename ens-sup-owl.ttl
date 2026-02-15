@@ -33,15 +33,21 @@ ens:Chercheur a owl:Class ;
     rdfs:subClassOf ens:Personne .
 
 # Un EnseignantChercheur est à la fois Enseignant et membre d’un Laboratoire
+# Un EnseignantChercheur est défin comme l'intersection de Enseignant et etre membre d'un Laboratoire
 ens:EnseignantChercheur a owl:Class ;
     rdfs:label "Enseignant-Chercheur"@fr ;
     rdfs:comment "Personne qui cumule les fonctions d'enseignement et de recherche"@fr ;
-    rdfs:subClassOf ens:Enseignant,
-    [
-    a owl:Restriction ;
-    owl:onProperty ens:membreDe ;
-    owl:someValuesFrom ens:Laboratoire
-    ].
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            ens:Enseignant
+            [
+                a owl:Restriction ;
+                owl:onProperty ens:membreDe ;
+                owl:someValuesFrom ens:Laboratoire
+            ]
+        )
+    ] .
 
 
 # Un étudiant est inscrit dans exactement une formation 

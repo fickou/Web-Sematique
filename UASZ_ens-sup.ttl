@@ -6,25 +6,24 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix uasz: <http://www.ugb.sn/ressources/UASZ#> .
 
-# =============================================
-# JEU DE DONNÉES RDF : Université Assane Seck de Ziguinchor (Turtle)
-# =============================================
 
-# =====================
+# DONNÉES RDF : UASZ (Turtle)
+
+
+
 # UNIVERSITÉ
-# =====================
 
 uasz:UASZ a ens:Universite ;
     ens:nom "Université Assane Seck de Ziguinchor" ;
     rdfs:label "Université Assane Seck de Ziguinchor"@fr ;
     ens:dateCreation "2007-01-01" .
 
-# =====================
+
+
 # FACULTÉS / UFR
-# =====================
 
 uasz:UFR_ST a ens:Faculte ;
-    ens:nom "UFR des Sciences et Technologies" ;
+    ens:nom "UFR des Sciences et Technologie" ;
     ens:faitPartieDe uasz:UASZ ;
     ens:offre uasz:Licence_Math, uasz:Master_IA, uasz:Doctorat_Math .
 
@@ -33,17 +32,17 @@ uasz:UFR_SJPEG a ens:Faculte ;
     ens:faitPartieDe uasz:UASZ ;
     ens:offre uasz:Licence_Droit .
 
-# =====================
+
 # ÉCOLE DOCTORALE
-# =====================
 
 uasz:ED_UASZ a ens:EcoleDoctorale ;
     ens:nom "École Doctorale de l'UASZ" ;
     rdfs:label "ED Pluridisciplinaire UASZ"@fr .
 
-# =====================
+
+
+
 # DÉPARTEMENTS
-# =====================
 
 uasz:Dept_Info_UASZ a ens:Departement ;
     ens:nom "Département d'Informatique" ;
@@ -53,9 +52,10 @@ uasz:Dept_Math_UASZ a ens:Departement ;
     ens:nom "Département de Mathématiques" ;
     ens:appartientA uasz:UFR_ST .
 
-# =====================
+
+
+
 # FORMATIONS
-# =====================
 
 uasz:Licence_Math a ens:Licence ;
     ens:nom "Licence Mathématiques Appliquées" ;
@@ -77,9 +77,10 @@ uasz:Licence_Droit a ens:Licence ;
     ens:titre "Licence en Droit Privé" ;
     ens:contientUE uasz:UE_DroitCivil .
 
-# =====================
+
+
+
 # UNITÉS D'ENSEIGNEMENT
-# =====================
 
 uasz:UE_AnalyseNum a ens:UniteEnseignement ;
     ens:nom "Analyse Numérique" ;
@@ -111,27 +112,28 @@ uasz:UE_DroitCivil a ens:UniteEnseignement ;
     ens:credits "5"^^xsd:integer ;
     ens:estEnseigneePar uasz:Prof_Sane .
 
-# =====================
+
+
+
 # LABORATOIRE
-# =====================
 
 uasz:LIRIMA a ens:Laboratoire ;
     ens:nom "Laboratoire d'Informatique et de Recherche en IA" ;
     rdfs:label "LIRIMA - UASZ"@fr ;
     ens:rattacheA uasz:UASZ .
 
-# =====================
+
+
 # PROJET DE RECHERCHE
-# =====================
 
 uasz:Projet_IA_Sante a ens:ProjetRecherche ;
     ens:nom "IA pour la Santé en Afrique de l'Ouest" ;
     ens:titre "Projet IA Santé" ;
     ens:dateCreation "2023-09-01" .
 
-# =====================
+
+
 # PUBLICATIONS
-# =====================
 
 uasz:Pub_Cisse_2024 a ens:Publication ;
     ens:titre "Deep Learning pour le diagnostic médical" ;
@@ -143,12 +145,13 @@ uasz:Pub_Diallo_2023 a ens:Publication ;
     dc:date "2023-08-22" ;
     dc:title "Modèles probabilistes pour la prévision climatique" .
 
-# =====================
+
+
+
 # ENSEIGNANTS
-# =====================
 
 # Prof Cissé : Enseignant + membreDe LIRIMA
-# => Avec OWL, il sera inféré comme EnseignantChercheur
+# Avec OWL, comme EnseignantChercheur
 uasz:Prof_Cisse a ens:Enseignant ;
     ens:nom "Abdoulaye Cissé" ;
     foaf:name "Abdoulaye Cissé" ;
@@ -183,9 +186,10 @@ uasz:Prof_Sane a ens:Enseignant ;
     foaf:mbox "mailto:papa.sane@uasz.edu.sn" ;
     ens:enseigne uasz:UE_DroitCivil .
 
-# =====================
+
+
+
 # ÉTUDIANTS
-# =====================
 
 uasz:Etu_Diouf a ens:Etudiant ;
     ens:nom "Cheikh Diouf" ;
@@ -199,9 +203,10 @@ uasz:Etu_Mendy a ens:Etudiant ;
     ens:email "bineta.mendy@uasz.edu.sn" ;
     ens:inscritDans uasz:Licence_Math .
 
-# =====================
+
+
+
 # DOCTORANT
-# =====================
 
 uasz:Doc_Badji a ens:Doctorant ;
     ens:nom "Lamine Badji" ;
@@ -211,18 +216,20 @@ uasz:Doc_Badji a ens:Doctorant ;
     ens:inscritDansED uasz:ED_UASZ ;
     ens:dirigePar uasz:Prof_Cisse .
 
-# =====================
+
+
+
 # PERSONNEL ADMINISTRATIF
-# =====================
 
 uasz:Admin_Faye a ens:PersonnelAdministratif ;
     ens:nom "Awa Faye" ;
     foaf:name "Awa Faye" ;
     ens:email "awa.faye@uasz.edu.sn" .
 
-# =====================
+
+
+
 # INFRASTRUCTURES
-# =====================
 
 uasz:Amphi_Central a ens:Amphitheatre ;
     ens:nom "Amphithéâtre Central" ;

@@ -1,0 +1,7 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+| enseignant                                     | nomEnseignant  | ue                                           | nomUE              |
+=======================================================================================================================================
+| <http://www.ugb.sn/ressources/UGB#Prof_Ndiaye> | "Fatou Ndiaye" | <http://www.ugb.sn/ressources/UGB#UE_BD>     | "Bases de Données" |
+| <http://www.ugb.sn/ressources/UGB#Prof_Ba>     | "Ibrahima Ba"  | <http://www.ugb.sn/ressources/UGB#UE_Algo>   | "Algorithmique"    |
+| <http://www.ugb.sn/ressources/UGB#Prof_Diop>   | "Moussa Diop"  | <http://www.ugb.sn/ressources/UGB#UE_WebSem> | "Web Sémantique"   |
+---------------------------------------------------------------------------------------------------------------------------------------

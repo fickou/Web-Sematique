@@ -1,0 +1,61 @@
+PREFIX ens: <http://www.ugb.sn/ressources/ens-sup.rdfs#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ugb: <http://www.ugb.sn/ressources/UGB#>
+PREFIX uasz: <http://www.ugb.sn/ressources/UASZ#>
+
+# REQUÊTE 1 : Lister tous les enseignants et les UE qu'ils enseignent
+
+SELECT ?enseignant ?nomEnseignant ?ue ?nomUE
+WHERE {
+  ?enseignant a ens:Enseignant .
+  ?enseignant ens:nom ?nomEnseignant .
+  ?enseignant ens:enseigne ?ue .
+  ?ue ens:nom ?nomUE .
+}
+ORDER BY ?nomEnseignant
+
+
+# REQUÊTE 2 : Trouver les étudiants inscrits dans chaque formation
+
+SELECT ?etudiant ?nomEtu ?formation ?nomFormation
+WHERE {
+  ?etudiant a ens:Etudiant .
+  ?etudiant ens:nom ?nomEtu .
+  ?etudiant ens:inscritDans ?formation .
+  ?formation ens:nom ?nomFormation .
+}
+ORDER BY ?nomFormation
+
+
+# REQUÊTE 3 : Trouver les EnseignantChercheurs déclarés EXPLICITEMENT
+
+SELECT ?ec ?nomEC
+WHERE {
+  ?ec a ens:EnseignantChercheur .
+  ?ec ens:nom ?nomEC .
+}
+
+
+# REQUÊTE 4 : Trouver les doctorants et leurs directeurs de thèse
+
+SELECT ?doctorant ?nomDoc ?directeur ?nomDir ?ecoleDoctorale ?nomED
+WHERE {
+  ?doctorant a ens:Doctorant .
+  ?doctorant ens:nom ?nomDoc .
+  ?doctorant ens:dirigePar ?directeur .
+  ?directeur ens:nom ?nomDir .
+  ?doctorant ens:inscritDansED ?ecoleDoctorale .
+  ?ecoleDoctorale ens:nom ?nomED .
+}
+
+
+# REQUÊTE 5 : Lister toutes les Personnes
+
+SELECT ?personne ?nomPersonne
+WHERE {
+  ?personne a ens:Personne .
+  ?personne ens:nom ?nomPersonne .
+}

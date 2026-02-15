@@ -7,18 +7,18 @@
          xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
          xml:base="http://www.ugb.sn/ressources/UASZ">
 
-  <!-- ================================================= -->
-  <!-- UNIVERSITÉ ASSANE SECK DE ZIGUINCHOR (UASZ)       -->
-  <!-- ================================================= -->
+ 
+  <!--  (UASZ)     -->
+ 
 
-  <!-- 1. Université -->
+  <!--  Université -->
   <ens:Universite rdf:ID="UASZ">
     <ens:nom>Université Assane Seck de Ziguinchor</ens:nom>
     <rdfs:label xml:lang="fr">Université Assane Seck de Ziguinchor</rdfs:label>
     <ens:dateCreation>2007-01-01</ens:dateCreation>
   </ens:Universite>
 
-  <!-- 2-3. Facultés / UFR -->
+  <!--  Facultés / UFR -->
   <ens:Faculte rdf:ID="UFR_ST">
     <ens:nom>UFR des Sciences et Technologies</ens:nom>
     <ens:faitPartieDe rdf:resource="#UASZ"/>
@@ -33,13 +33,13 @@
     <ens:offre rdf:resource="#Licence_Droit"/>
   </ens:Faculte>
 
-  <!-- 4. École Doctorale -->
+  <!--  École Doctorale -->
   <ens:EcoleDoctorale rdf:ID="ED_UASZ">
     <ens:nom>École Doctorale de l'UASZ</ens:nom>
     <rdfs:label xml:lang="fr">ED Pluridisciplinaire UASZ</rdfs:label>
   </ens:EcoleDoctorale>
 
-  <!-- 5-6. Départements -->
+  <!--  Départements -->
   <ens:Departement rdf:ID="Dept_Info_UASZ">
     <ens:nom>Département d'Informatique</ens:nom>
     <ens:appartientA rdf:resource="#UFR_ST"/>
@@ -50,7 +50,7 @@
     <ens:appartientA rdf:resource="#UFR_ST"/>
   </ens:Departement>
 
-  <!-- 7-10. Formations -->
+  <!--  Formations -->
   <ens:Licence rdf:ID="Licence_Math">
     <ens:nom>Licence Mathématiques Appliquées</ens:nom>
     <ens:titre>Licence en Mathématiques Appliquées</ens:titre>
@@ -77,7 +77,7 @@
     <ens:contientUE rdf:resource="#UE_DroitCivil"/>
   </ens:Licence>
 
-  <!-- 11-15. Unités d'Enseignement -->
+  <!--  Unités d'Enseignement -->
   <ens:UniteEnseignement rdf:ID="UE_AnalyseNum">
     <ens:nom>Analyse Numérique</ens:nom>
     <ens:titre>Analyse Numérique et Optimisation</ens:titre>
@@ -113,21 +113,21 @@
     <ens:estEnseigneePar rdf:resource="#Prof_Sane"/>
   </ens:UniteEnseignement>
 
-  <!-- 16. Laboratoire -->
+  <!--  Laboratoire -->
   <ens:Laboratoire rdf:ID="LIRIMA">
     <ens:nom>Laboratoire d'Informatique et de Recherche en IA</ens:nom>
     <rdfs:label xml:lang="fr">LIRIMA - UASZ</rdfs:label>
     <ens:rattacheA rdf:resource="#UASZ"/>
   </ens:Laboratoire>
 
-  <!-- 17. Projet de Recherche -->
+  <!--  Projet de Recherche -->
   <ens:ProjetRecherche rdf:ID="Projet_IA_Sante">
     <ens:nom>IA pour la Santé en Afrique de l'Ouest</ens:nom>
     <ens:titre>Projet IA Santé</ens:titre>
     <ens:dateCreation>2023-09-01</ens:dateCreation>
   </ens:ProjetRecherche>
 
-  <!-- 18-19. Publications -->
+  <!--  Publications -->
   <ens:Publication rdf:ID="Pub_Cisse_2024">
     <ens:titre>Deep Learning pour le diagnostic médical</ens:titre>
     <dc:date>2024-03-10</dc:date>
@@ -140,7 +140,7 @@
     <dc:title>Modèles probabilistes pour la prévision climatique</dc:title>
   </ens:Publication>
 
-  <!-- 20-23. Enseignants -->
+  <!--  Enseignants -->
   <!-- Prof Cissé : Enseignant + membreDe LIRIMA => inféré EnseignantChercheur via OWL -->
   <ens:Enseignant rdf:ID="Prof_Cisse">
     <ens:nom>Abdoulaye Cissé</ens:nom>
@@ -180,7 +180,7 @@
     <ens:enseigne rdf:resource="#UE_DroitCivil"/>
   </ens:Enseignant>
 
-  <!-- 24-25. Étudiants -->
+  <!--  Étudiants -->
   <ens:Etudiant rdf:ID="Etu_Diouf">
     <ens:nom>Cheikh Diouf</ens:nom>
     <foaf:name>Cheikh Diouf</foaf:name>
@@ -195,7 +195,7 @@
     <ens:inscritDans rdf:resource="#Licence_Math"/>
   </ens:Etudiant>
 
-  <!-- 26. Doctorant -->
+  <!--  Doctorant -->
   <ens:Doctorant rdf:ID="Doc_Badji">
     <ens:nom>Lamine Badji</ens:nom>
     <foaf:name>Lamine Badji</foaf:name>
@@ -205,14 +205,14 @@
     <ens:dirigePar rdf:resource="#Prof_Cisse"/>
   </ens:Doctorant>
 
-  <!-- 27. Personnel Administratif -->
+  <!--  Personnel Administratif -->
   <ens:PersonnelAdministratif rdf:ID="Admin_Faye">
     <ens:nom>Awa Faye</ens:nom>
     <foaf:name>Awa Faye</foaf:name>
     <ens:email>awa.faye@uasz.edu.sn</ens:email>
   </ens:PersonnelAdministratif>
 
-  <!-- 28-30. Infrastructures -->
+  <!-- Infrastructures -->
   <ens:Amphitheatre rdf:ID="Amphi_Central">
     <ens:nom>Amphithéâtre Central</ens:nom>
     <ens:capacite rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</ens:capacite>
