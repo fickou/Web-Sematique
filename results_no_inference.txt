@@ -1,0 +1,34 @@
+Loading Ontology (ens-sup.ttl)...
+Loading Data (UGB_ens-sup.ttl)...
+Loading Data (UASZ_ens-sup.ttl)...
+Reading Queries...
+Found 5 queries.
+
+--- Running Query 1 ---
+Results (8):
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Prof_Cisse'), rdflib.term.Literal('Abdoulaye Cissé'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#UE_AnalyseNum'), rdflib.term.Literal('Analyse Numérique'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Prof_Cisse'), rdflib.term.Literal('Abdoulaye Cissé'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#UE_ML'), rdflib.term.Literal('Machine Learning'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Ndiaye'), rdflib.term.Literal('Fatou Ndiaye'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#UE_BD'), rdflib.term.Literal('Bases de Données'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Ba'), rdflib.term.Literal('Ibrahima Ba'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#UE_Algo'), rdflib.term.Literal('Algorithmique'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Prof_Mbaye'), rdflib.term.Literal('Khady Mbaye'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#UE_NLP'), rdflib.term.Literal('Traitement du Langage Naturel'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Prof_Diallo'), rdflib.term.Literal('Mamadou Diallo'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#UE_Proba'), rdflib.term.Literal('Probabilités et Statistiques'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Diop'), rdflib.term.Literal('Moussa Diop'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#UE_WebSem'), rdflib.term.Literal('Web Sémantique'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Prof_Sane'), rdflib.term.Literal('Papa Sané'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#UE_DroitCivil'), rdflib.term.Literal('Droit Civil'))
+
+--- Running Query 2 ---
+Results (4):
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Etu_Sow'), rdflib.term.Literal('Aissatou Sow'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Licence_Info'), rdflib.term.Literal('Licence Informatique'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Etu_Mendy'), rdflib.term.Literal('Bineta Mendy'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Licence_Math'), rdflib.term.Literal('Licence Mathématiques Appliquées'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Etu_Fall'), rdflib.term.Literal('Amadou Fall'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Master_GDIL'), rdflib.term.Literal('Master GDIL'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Etu_Diouf'), rdflib.term.Literal('Cheikh Diouf'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Master_IA'), rdflib.term.Literal('Master Intelligence Artificielle'))
+
+--- Running Query 3 ---
+Results (0):
+
+--- Running Query 4 ---
+Results (2):
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Doc_Gueye'), rdflib.term.Literal('Ousmane Gueye'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Diop'), rdflib.term.Literal('Moussa Diop'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#ED_SEV'), rdflib.term.Literal('École Doctorale Sciences et Technologies'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Doc_Badji'), rdflib.term.Literal('Lamine Badji'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#Prof_Cisse'), rdflib.term.Literal('Abdoulaye Cissé'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UASZ#ED_UASZ'), rdflib.term.Literal("École Doctorale de l'UASZ"))
+
+--- Running Query 5 ---
+Results (0):

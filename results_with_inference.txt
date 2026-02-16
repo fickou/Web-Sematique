@@ -1,0 +1,36 @@
+Loading Ontology (ens-sup-owl.ttl)...
+Loading Data (UGB_ens-sup.ttl)...
+Applying OWL Inference (OWLRL)...
+Reading Queries...
+Found 5 queries.
+
+--- Running Query 1 ---
+Results (3):
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Ndiaye'), rdflib.term.Literal('Fatou Ndiaye'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#UE_BD'), rdflib.term.Literal('Bases de Données'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Ba'), rdflib.term.Literal('Ibrahima Ba'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#UE_Algo'), rdflib.term.Literal('Algorithmique'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Diop'), rdflib.term.Literal('Moussa Diop'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#UE_WebSem'), rdflib.term.Literal('Web Sémantique'))
+
+--- Running Query 2 ---
+Results (3):
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Doc_Gueye'), rdflib.term.Literal('Ousmane Gueye'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Doctorat_Info'), rdflib.term.Literal('Doctorat en Informatique'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Etu_Sow'), rdflib.term.Literal('Aissatou Sow'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Licence_Info'), rdflib.term.Literal('Licence Informatique'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Etu_Fall'), rdflib.term.Literal('Amadou Fall'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Master_GDIL'), rdflib.term.Literal('Master GDIL'))
+
+--- Running Query 3 ---
+Results (2):
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Diop'), rdflib.term.Literal('Moussa Diop'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Ndiaye'), rdflib.term.Literal('Fatou Ndiaye'))
+
+--- Running Query 4 ---
+Results (1):
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Doc_Gueye'), rdflib.term.Literal('Ousmane Gueye'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Diop'), rdflib.term.Literal('Moussa Diop'), rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#ED_SEV'), rdflib.term.Literal('École Doctorale Sciences et Technologies'))
+
+--- Running Query 5 ---
+Results (7):
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Ba'), rdflib.term.Literal('Ibrahima Ba'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Ndiaye'), rdflib.term.Literal('Fatou Ndiaye'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Prof_Diop'), rdflib.term.Literal('Moussa Diop'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Doc_Gueye'), rdflib.term.Literal('Ousmane Gueye'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Admin_Sarr'), rdflib.term.Literal('Mariama Sarr'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Etu_Sow'), rdflib.term.Literal('Aissatou Sow'))
+(rdflib.term.URIRef('http://www.ugb.sn/ressources/UGB#Etu_Fall'), rdflib.term.Literal('Amadou Fall'))

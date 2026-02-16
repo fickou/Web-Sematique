@@ -285,33 +285,33 @@ ens:rattacheA a owl:ObjectProperty ;
     rdfs:range ens:Universite .
 
 # --- Propriétés Métadonnées ---
-ens:nom a owl:ObjectProperty ;
+ens:nom a owl:DatatypeProperty ;
     rdfs:label "nom"@fr ;
     rdfs:comment "Nom d'une ressource"@fr ;
     rdfs:subPropertyOf foaf:name .
 
-ens:email a owl:ObjectProperty ;
+ens:email a owl:DatatypeProperty ;
     rdfs:label "email"@fr ;
     rdfs:comment "Adresse email"@fr ;
     rdfs:domain ens:Personne ;
     rdfs:subPropertyOf foaf:mbox .
 
-ens:titre a owl:ObjectProperty ;
+ens:titre a owl:DatatypeProperty ;
     rdfs:label "titre"@fr ;
     rdfs:comment "Titre d'une publication ou d'une formation"@fr ;
     rdfs:subPropertyOf dc:title .
 
-ens:dateCreation a owl:ObjectProperty ;
+ens:dateCreation a owl:DatatypeProperty ;
     rdfs:label "date de création"@fr ;
     rdfs:comment "Date de création de la ressource"@fr ;
     rdfs:subPropertyOf dc:date .
 
-ens:credits a owl:ObjectProperty ;
+ens:credits a owl:DatatypeProperty ;
     rdfs:label "crédits ECTS"@fr ;
     rdfs:comment "Nombre de crédits ECTS pour une UE ou formation"@fr ;
     rdfs:domain ens:UniteEnseignement .
 
-ens:capacite a owl:ObjectProperty ;
+ens:capacite a owl:DatatypeProperty ;
     rdfs:label "capacité"@fr ;
     rdfs:comment "Capacité d'accueil d'une infrastructure"@fr ;
     rdfs:domain ens:Infrastructure .

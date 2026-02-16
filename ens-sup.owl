@@ -1,339 +1,339 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Personne">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Personne</rdfs:label>
-    <rdfs:comment xml:lang="fr">Représente une personne impliquée dans l'enseignement supérieur</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Enseignant">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Enseignant</rdfs:label>
-    <rdfs:comment xml:lang="fr">Personne qui enseigne dans un établissement d'enseignement supérieur</rdfs:comment>
-    <owl:disjointWith rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Etudiant"/>
-    <owl:disjointWith rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#PersonnelAdministratif"/>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Personne"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Doctorat">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Doctorat</rdfs:label>
-    <rdfs:comment xml:lang="fr">Formation de niveau Bac+8 préparant au grade de docteur</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Formation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#capacite">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">capacité</rdfs:label>
-    <rdfs:comment xml:lang="fr">Capacité d'accueil d'une infrastructure</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Infrastructure"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Universite">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Université</rdfs:label>
-    <rdfs:comment xml:lang="fr">Établissement d'enseignement supérieur et de recherche</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Faculte">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Faculté / UFR</rdfs:label>
-    <rdfs:comment xml:lang="fr">Unité de Formation et de Recherche au sein d'une université</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Publication">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Publication Scientifique</rdfs:label>
-    <rdfs:comment xml:lang="fr">Document publié présentant des résultats de recherche</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Doctorant">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Doctorant</rdfs:label>
-    <rdfs:comment xml:lang="fr">Étudiant inscrit en doctorat</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Etudiant"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Imprimante3D">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Imprimante 3D</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#RessourceMaterielle"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#SuperCalculateur">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Super Calculateur</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#RessourceMaterielle"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#ServeurCloud">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Serveur Cloud</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#RessourceMaterielle"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#PersonnelAdministratif">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Personnel Administratif</rdfs:label>
-    <rdfs:comment xml:lang="fr">Personnel non enseignant travaillant dans l'administration</rdfs:comment>
-    <owl:disjointWith rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Enseignant"/>
-    <owl:disjointWith rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Etudiant"/>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Personne"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#inscritDansED">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">inscrit dans école doctorale</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un doctorant à son école doctorale</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Doctorant"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#EcoleDoctorale"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#EnseignantChercheur">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Enseignant-Chercheur</rdfs:label>
-    <rdfs:comment xml:lang="fr">Personne qui cumule les fonctions d'enseignement et de recherche</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Enseignant"/>
-    <rdfs:subClassOf rdf:nodeID="n953f0b06c27648c1b4aa945bf25cc665b1"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#contientUE">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">contient UE</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie une formation à ses unités d'enseignement</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Formation"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#UniteEnseignement"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#RessourceMaterielle">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Ressource Matérielle</rdfs:label>
-    <rdfs:comment xml:lang="fr">Équipement ou infrastructure physique</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#rattacheA">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">rattaché à</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un laboratoire à une université</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Laboratoire"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Universite"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Chercheur">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Chercheur</rdfs:label>
-    <rdfs:comment xml:lang="fr">Personne qui effectue des travaux de recherche</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Personne"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n953f0b06c27648c1b4aa945bf25cc665b2">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#inscritDans"/>
-    <owl:mincardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:mincardinality>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Infrastructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Infrastructure</rdfs:label>
-    <rdfs:comment xml:lang="fr">Bâtiment ou espace au sein de l'université</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#membreDe">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">membre de</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un chercheur à son laboratoire</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Chercheur"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Laboratoire"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Amphitheatre">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Amphithéâtre</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Infrastructure"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Etudiant">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Étudiant</rdfs:label>
-    <rdfs:comment xml:lang="fr">Personne inscrite dans une formation de l'enseignement supérieur</rdfs:comment>
-    <owl:disjointWith rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Enseignant"/>
-    <owl:disjointWith rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#PersonnelAdministratif"/>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Personne"/>
-    <rdfs:subClassOf rdf:nodeID="n953f0b06c27648c1b4aa945bf25cc665b2"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Licence">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Licence</rdfs:label>
-    <rdfs:comment xml:lang="fr">Formation de niveau Bac+3</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Formation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#ResultatRecherche">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Résultat de Recherche</rdfs:label>
-    <rdfs:comment xml:lang="fr">Produit issu d'un travail de recherche</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Maquette">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Maquette de Formation</rdfs:label>
-    <rdfs:comment xml:lang="fr">Description structurée du contenu d'une formation</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#appartientA">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">appartient à</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un département à sa faculté</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Departement"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Faculte"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Formation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Formation</rdfs:label>
-    <rdfs:comment xml:lang="fr">Programme d'études proposé par un établissement</rdfs:comment>
-    <rdfs:subClassOf rdf:nodeID="n953f0b06c27648c1b4aa945bf25cc665b3"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#inscritDans">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">inscrit dans</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un étudiant à sa formation</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Etudiant"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Formation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#SalleClasse">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Salle de Classe</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Infrastructure"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#ProjetRecherche">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Projet de Recherche</rdfs:label>
-    <rdfs:comment xml:lang="fr">Initiative de recherche avec objectifs et financement</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#participeA">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">participe à</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un chercheur à un projet de recherche</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Chercheur"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#ProjetRecherche"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#publie">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">publie</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un chercheur à une publication</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Chercheur"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Publication"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Bureau">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Bureau</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Infrastructure"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#titre">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">titre</rdfs:label>
-    <rdfs:comment xml:lang="fr">Titre d'une publication ou d'une formation</rdfs:comment>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Master">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Master</rdfs:label>
-    <rdfs:comment xml:lang="fr">Formation de niveau Bac+5</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Formation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Laboratoire">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Laboratoire</rdfs:label>
-    <rdfs:comment xml:lang="fr">Structure de recherche regroupant des chercheurs</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Incubateur">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Incubateur</rdfs:label>
-    <rdfs:comment xml:lang="fr">Structure d'accompagnement de startups et projets innovants</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#RessourceMaterielle"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#dirigePar">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">dirigé par</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un doctorant à son directeur de thèse</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Doctorant"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#EnseignantChercheur"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#credits">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">crédits ECTS</rdfs:label>
-    <rdfs:comment xml:lang="fr">Nombre de crédits ECTS pour une UE ou formation</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#UniteEnseignement"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#email">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">email</rdfs:label>
-    <rdfs:comment xml:lang="fr">Adresse email</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Personne"/>
-    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/mbox"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#estEnseigneePar">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">est enseignée par</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie une UE à son enseignant</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#UniteEnseignement"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Enseignant"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#nom">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">nom</rdfs:label>
-    <rdfs:comment xml:lang="fr">Nom d'une ressource</rdfs:comment>
-    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/name"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Restaurant">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Restaurant</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Infrastructure"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Departement">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Département</rdfs:label>
-    <rdfs:comment xml:lang="fr">Division administrative au sein d'une faculté</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n953f0b06c27648c1b4aa945bf25cc665b1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#membreDe"/>
-    <owl:someValuesFrom rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Laboratoire"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#UniteEnseignement">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Unité d'Enseignement</rdfs:label>
-    <rdfs:comment xml:lang="fr">Module composant une formation</rdfs:comment>
-    <rdfs:subClassOf rdf:nodeID="n953f0b06c27648c1b4aa945bf25cc665b4"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#offre">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">offre</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie une faculté à une formation proposée</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Faculte"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Formation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#enseigne">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">enseigne</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie un enseignant à une unité d'enseignement</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Enseignant"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#UniteEnseignement"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n953f0b06c27648c1b4aa945bf25cc665b3">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#contientUE"/>
-    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#Batiment">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Bâtiment</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Infrastructure"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#InstallationSportiveCulturelle">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">Installation Sportive et Culturelle</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Infrastructure"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n953f0b06c27648c1b4aa945bf25cc665b4">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#estEnseigneePar"/>
-    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#faitPartieDe">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">fait partie de</rdfs:label>
-    <rdfs:comment xml:lang="fr">Relie une faculté à son université</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Faculte"/>
-    <rdfs:range rdf:resource="http://www.ugb.sn/ressources/ens-sup.rdfs#Universite"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#dateCreation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="fr">date de création</rdfs:label>
-    <rdfs:comment xml:lang="fr">Date de création de la ressource</rdfs:comment>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ugb.sn/ressources/ens-sup.rdfs#EcoleDoctorale">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="fr">École Doctorale</rdfs:label>
-    <rdfs:comment xml:lang="fr">Structure d'accueil et de formation des doctorants</rdfs:comment>
-  </rdf:Description>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ugb.sn/ressources/ens-sup.owl#"
+     xml:base="http://www.ugb.sn/ressources/ens-sup.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:ens="http://www.ugb.sn/ressources/ens-sup.owl#">
+
+    <owl:Ontology rdf:about="http://www.ugb.sn/ressources/ens-sup.owl">
+        <rdfs:comment>Ontologie OWL des ressources de l'enseignement supérieur</rdfs:comment>
+    </owl:Ontology>
+
+    <!-- =====================
+         CLASSES PRINCIPALES
+         ===================== -->
+
+    <!-- Ressources Humaines -->
+    <owl:Class rdf:about="ens:Personne">
+        <rdfs:label>Personne</rdfs:label>
+        <rdfs:comment>Représente une personne impliquée dans l'enseignement supérieur</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="foaf:Person"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Enseignant">
+        <rdfs:label>Enseignant</rdfs:label>
+        <rdfs:comment>Personne qui enseigne dans un établissement d'enseignement supérieur</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Personne"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Chercheur">
+        <rdfs:label>Chercheur</rdfs:label>
+        <rdfs:comment>Personne qui effectue des travaux de recherche</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Personne"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:EnseignantChercheur">
+        <rdfs:label>Enseignant-Chercheur</rdfs:label>
+        <rdfs:comment>Personne qui cumule les fonctions d'enseignement et de recherche</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Enseignant"/>
+        <rdfs:subClassOf rdf:resource="ens:Chercheur"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Etudiant">
+        <rdfs:label>Étudiant</rdfs:label>
+        <rdfs:comment>Personne inscrite dans une formation de l'enseignement supérieur</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Personne"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Doctorant">
+        <rdfs:label>Doctorant</rdfs:label>
+        <rdfs:comment>Étudiant inscrit en doctorat</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Etudiant"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:PersonnelAdministratif">
+        <rdfs:label>Personnel Administratif</rdfs:label>
+        <rdfs:comment>Personnel non enseignant travaillant dans l'administration</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Personne"/>
+    </owl:Class>
+
+    <!-- Structures Académiques -->
+    <owl:Class rdf:about="ens:Universite">
+        <rdfs:label>Université</rdfs:label>
+        <rdfs:comment>Établissement d'enseignement supérieur et de recherche</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Faculte">
+        <rdfs:label>Faculté / UFR</rdfs:label>
+        <rdfs:comment>Unité de Formation et de Recherche au sein d'une université</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:EcoleDoctorale">
+        <rdfs:label>École Doctorale</rdfs:label>
+        <rdfs:comment>Structure d'accueil et de formation des doctorants</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Departement">
+        <rdfs:label>Département</rdfs:label>
+        <rdfs:comment>Division administrative au sein d'une faculté</rdfs:comment>
+    </owl:Class>
+
+    <!-- Formations -->
+    <owl:Class rdf:about="ens:Formation">
+        <rdfs:label>Formation</rdfs:label>
+        <rdfs:comment>Programme d'études proposé par un établissement</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Licence">
+        <rdfs:label>Licence</rdfs:label>
+        <rdfs:comment>Formation de niveau Bac+3</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Formation"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Master">
+        <rdfs:label>Master</rdfs:label>
+        <rdfs:comment>Formation de niveau Bac+5</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Formation"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Doctorat">
+        <rdfs:label>Doctorat</rdfs:label>
+        <rdfs:comment>Formation de niveau Bac+8 préparant au grade de docteur</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:Formation"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:UniteEnseignement">
+        <rdfs:label>Unité d'Enseignement</rdfs:label>
+        <rdfs:comment>Module composant une formation</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Maquette">
+        <rdfs:label>Maquette de Formation</rdfs:label>
+        <rdfs:comment>Description structurée du contenu d'une formation</rdfs:comment>
+    </owl:Class>
+
+    <!-- Recherche -->
+    <owl:Class rdf:about="ens:Laboratoire">
+        <rdfs:label>Laboratoire</rdfs:label>
+        <rdfs:comment>Structure de recherche regroupant des chercheurs</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:ProjetRecherche">
+        <rdfs:label>Projet de Recherche</rdfs:label>
+        <rdfs:comment>Initiative de recherche avec objectifs et financement</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Publication">
+        <rdfs:label>Publication Scientifique</rdfs:label>
+        <rdfs:comment>Document publié présentant des résultats de recherche</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:ResultatRecherche">
+        <rdfs:label>Résultat de Recherche</rdfs:label>
+        <rdfs:comment>Produit issu d'un travail de recherche</rdfs:comment>
+    </owl:Class>
+
+    <!-- Ressources Matérielles -->
+    <owl:Class rdf:about="ens:RessourceMaterielle">
+        <rdfs:label>Ressource Matérielle</rdfs:label>
+        <rdfs:comment>Équipement ou infrastructure physique</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Imprimante3D">
+        <rdfs:label>Imprimante 3D</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:RessourceMaterielle"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:SuperCalculateur">
+        <rdfs:label>Super Calculateur</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:RessourceMaterielle"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:ServeurCloud">
+        <rdfs:label>Serveur Cloud</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:RessourceMaterielle"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Incubateur">
+        <rdfs:label>Incubateur</rdfs:label>
+        <rdfs:comment>Structure d'accompagnement de startups et projets innovants</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="ens:RessourceMaterielle"/>
+    </owl:Class>
+
+    <!-- Infrastructures -->
+    <owl:Class rdf:about="ens:Infrastructure">
+        <rdfs:label>Infrastructure</rdfs:label>
+        <rdfs:comment>Bâtiment ou espace au sein de l'université</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Batiment">
+        <rdfs:label>Bâtiment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:Infrastructure"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:SalleClasse">
+        <rdfs:label>Salle de Classe</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:Infrastructure"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Amphitheatre">
+        <rdfs:label>Amphithéâtre</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:Infrastructure"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Bureau">
+        <rdfs:label>Bureau</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:Infrastructure"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:Restaurant">
+        <rdfs:label>Restaurant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:Infrastructure"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="ens:InstallationSportiveCulturelle">
+        <rdfs:label>Installation Sportive et Culturelle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="ens:Infrastructure"/>
+    </owl:Class>
+
+    <!-- =====================
+         PROPRIÉTÉS OWL
+         ===================== -->
+
+    <!-- Enseignement -->
+    <owl:ObjectProperty rdf:about="ens:enseigne">
+        <rdfs:label>enseigne</rdfs:label>
+        <rdfs:comment>Relie un enseignant à une unité d'enseignement</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Enseignant"/>
+        <rdfs:range rdf:resource="ens:UniteEnseignement"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:estEnseigneePar">
+        <rdfs:label>est enseignée par</rdfs:label>
+        <rdfs:comment>Relie une UE à son enseignant</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:UniteEnseignement"/>
+        <rdfs:range rdf:resource="ens:Enseignant"/>
+    </owl:ObjectProperty>
+
+    <!-- Inscriptions -->
+    <owl:ObjectProperty rdf:about="ens:inscritDans">
+        <rdfs:label>inscrit dans</rdfs:label>
+        <rdfs:comment>Relie un étudiant à sa formation</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Etudiant"/>
+        <rdfs:range rdf:resource="ens:Formation"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:inscritDansED">
+        <rdfs:label>inscrit dans école doctorale</rdfs:label>
+        <rdfs:comment>Relie un doctorant à son école doctorale</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Doctorant"/>
+        <rdfs:range rdf:resource="ens:EcoleDoctorale"/>
+    </owl:ObjectProperty>
+
+    <!-- Organisation -->
+    <owl:ObjectProperty rdf:about="ens:appartientA">
+        <rdfs:label>appartient à</rdfs:label>
+        <rdfs:comment>Relie un département à sa faculté</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Departement"/>
+        <rdfs:range rdf:resource="ens:Faculte"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:offre">
+        <rdfs:label>offre</rdfs:label>
+        <rdfs:comment>Relie une faculté à une formation proposée</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Faculte"/>
+        <rdfs:range rdf:resource="ens:Formation"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:contientUE">
+        <rdfs:label>contient UE</rdfs:label>
+        <rdfs:comment>Relie une formation à ses unités d'enseignement</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Formation"/>
+        <rdfs:range rdf:resource="ens:UniteEnseignement"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:faitPartieDe">
+        <rdfs:label>fait partie de</rdfs:label>
+        <rdfs:comment>Relie une faculté à son université</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Faculte"/>
+        <rdfs:range rdf:resource="ens:Universite"/>
+    </owl:ObjectProperty>
+
+    <!-- Recherche -->
+    <owl:ObjectProperty rdf:about="ens:membreDe">
+        <rdfs:label>membre de</rdfs:label>
+        <rdfs:comment>Relie un chercheur à son laboratoire</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Chercheur"/>
+        <rdfs:range rdf:resource="ens:Laboratoire"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:participeA">
+        <rdfs:label>participe à</rdfs:label>
+        <rdfs:comment>Relie un chercheur à un projet de recherche</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Chercheur"/>
+        <rdfs:range rdf:resource="ens:ProjetRecherche"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:publie">
+        <rdfs:label>publie</rdfs:label>
+        <rdfs:comment>Relie un chercheur à une publication</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Chercheur"/>
+        <rdfs:range rdf:resource="ens:Publication"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:dirigePar">
+        <rdfs:label>dirigé par</rdfs:label>
+        <rdfs:comment>Relie un doctorant à son directeur de thèse</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Doctorant"/>
+        <rdfs:range rdf:resource="ens:EnseignantChercheur"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="ens:rattacheA">
+        <rdfs:label>rattaché à</rdfs:label>
+        <rdfs:comment>Relie un laboratoire à une université</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Laboratoire"/>
+        <rdfs:range rdf:resource="ens:Universite"/>
+    </owl:ObjectProperty>
+
+    <!-- Métadonnées -->
+    <owl:DatatypeProperty rdf:about="ens:nom">
+        <rdfs:label>nom</rdfs:label>
+        <rdfs:comment>Nom d'une ressource</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="foaf:name"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="ens:email">
+        <rdfs:label>email</rdfs:label>
+        <rdfs:comment>Adresse email</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Personne"/>
+        <rdfs:subPropertyOf rdf:resource="foaf:mbox"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="ens:titre">
+        <rdfs:label>titre</rdfs:label>
+        <rdfs:comment>Titre d'une publication ou d'une formation</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="dc:title"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="ens:dateCreation">
+        <rdfs:label>date de création</rdfs:label>
+        <rdfs:comment>Date de création de la ressource</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="dc:date"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="ens:credits">
+        <rdfs:label>crédits ECTS</rdfs:label>
+        <rdfs:comment>Nombre de crédits ECTS pour une UE ou formation</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:UniteEnseignement"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="ens:capacite">
+        <rdfs:label>capacité</rdfs:label>
+        <rdfs:comment>Capacité d'accueil d'une infrastructure</rdfs:comment>
+        <rdfs:domain rdf:resource="ens:Infrastructure"/>
+    </owl:DatatypeProperty>
+
 </rdf:RDF>
