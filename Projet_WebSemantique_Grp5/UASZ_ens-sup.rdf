@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:ens="http://www.ugb.sn/ressources/ens-sup.rdfs#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xml:base="http://www.ugb.sn/ressources/UASZ">
+
+ 
+  <!--  (UASZ)     -->
+ 
+
+  <!--  Université -->
+  <ens:Universite rdf:ID="UASZ">
+    <ens:nom>Université Assane Seck de Ziguinchor</ens:nom>
+    <rdfs:label xml:lang="fr">Université Assane Seck de Ziguinchor</rdfs:label>
+    <ens:dateCreation>2007-01-01</ens:dateCreation>
+  </ens:Universite>
+
+  <!--  Facultés / UFR -->
+  <ens:Faculte rdf:ID="UFR_ST">
+    <ens:nom>UFR des Sciences et Technologies</ens:nom>
+    <ens:faitPartieDe rdf:resource="#UASZ"/>
+    <ens:offre rdf:resource="#Licence_Math"/>
+    <ens:offre rdf:resource="#Master_IA"/>
+    <ens:offre rdf:resource="#Doctorat_Math"/>
+  </ens:Faculte>
+
+  <ens:Faculte rdf:ID="UFR_SJPEG">
+    <ens:nom>UFR des Sciences Juridiques, Politiques, Économiques et de Gestion</ens:nom>
+    <ens:faitPartieDe rdf:resource="#UASZ"/>
+    <ens:offre rdf:resource="#Licence_Droit"/>
+  </ens:Faculte>
+
+  <!--  École Doctorale -->
+  <ens:EcoleDoctorale rdf:ID="ED_UASZ">
+    <ens:nom>École Doctorale de l'UASZ</ens:nom>
+    <rdfs:label xml:lang="fr">ED Pluridisciplinaire UASZ</rdfs:label>
+  </ens:EcoleDoctorale>
+
+  <!--  Départements -->
+  <ens:Departement rdf:ID="Dept_Info_UASZ">
+    <ens:nom>Département d'Informatique</ens:nom>
+    <ens:appartientA rdf:resource="#UFR_ST"/>
+  </ens:Departement>
+
+  <ens:Departement rdf:ID="Dept_Math_UASZ">
+    <ens:nom>Département de Mathématiques</ens:nom>
+    <ens:appartientA rdf:resource="#UFR_ST"/>
+  </ens:Departement>
+
+  <!--  Formations -->
+  <ens:Licence rdf:ID="Licence_Math">
+    <ens:nom>Licence Mathématiques Appliquées</ens:nom>
+    <ens:titre>Licence en Mathématiques Appliquées</ens:titre>
+    <ens:contientUE rdf:resource="#UE_AnalyseNum"/>
+    <ens:contientUE rdf:resource="#UE_Proba"/>
+  </ens:Licence>
+
+  <ens:Master rdf:ID="Master_IA">
+    <ens:nom>Master Intelligence Artificielle</ens:nom>
+    <ens:titre>Master en Intelligence Artificielle</ens:titre>
+    <ens:contientUE rdf:resource="#UE_ML"/>
+    <ens:contientUE rdf:resource="#UE_NLP"/>
+  </ens:Master>
+
+  <ens:Doctorat rdf:ID="Doctorat_Math">
+    <ens:nom>Doctorat en Mathématiques</ens:nom>
+    <ens:titre>Doctorat en Mathématiques Fondamentales et Appliquées</ens:titre>
+    <ens:contientUE rdf:resource="#UE_AnalyseNum"/>
+  </ens:Doctorat>
+
+  <ens:Licence rdf:ID="Licence_Droit">
+    <ens:nom>Licence en Droit</ens:nom>
+    <ens:titre>Licence en Droit Privé</ens:titre>
+    <ens:contientUE rdf:resource="#UE_DroitCivil"/>
+  </ens:Licence>
+
+  <!--  Unités d'Enseignement -->
+  <ens:UniteEnseignement rdf:ID="UE_AnalyseNum">
+    <ens:nom>Analyse Numérique</ens:nom>
+    <ens:titre>Analyse Numérique et Optimisation</ens:titre>
+    <ens:credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ens:credits>
+    <ens:estEnseigneePar rdf:resource="#Prof_Cisse"/>
+  </ens:UniteEnseignement>
+
+  <ens:UniteEnseignement rdf:ID="UE_Proba">
+    <ens:nom>Probabilités et Statistiques</ens:nom>
+    <ens:titre>Probabilités et Statistiques Avancées</ens:titre>
+    <ens:credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</ens:credits>
+    <ens:estEnseigneePar rdf:resource="#Prof_Diallo"/>
+  </ens:UniteEnseignement>
+
+  <ens:UniteEnseignement rdf:ID="UE_ML">
+    <ens:nom>Machine Learning</ens:nom>
+    <ens:titre>Apprentissage Automatique</ens:titre>
+    <ens:credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</ens:credits>
+    <ens:estEnseigneePar rdf:resource="#Prof_Cisse"/>
+  </ens:UniteEnseignement>
+
+  <ens:UniteEnseignement rdf:ID="UE_NLP">
+    <ens:nom>Traitement du Langage Naturel</ens:nom>
+    <ens:titre>NLP et Text Mining</ens:titre>
+    <ens:credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</ens:credits>
+    <ens:estEnseigneePar rdf:resource="#Prof_Mbaye"/>
+  </ens:UniteEnseignement>
+
+  <ens:UniteEnseignement rdf:ID="UE_DroitCivil">
+    <ens:nom>Droit Civil</ens:nom>
+    <ens:titre>Introduction au Droit Civil</ens:titre>
+    <ens:credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ens:credits>
+    <ens:estEnseigneePar rdf:resource="#Prof_Sane"/>
+  </ens:UniteEnseignement>
+
+  <!--  Laboratoire -->
+  <ens:Laboratoire rdf:ID="LIRIMA">
+    <ens:nom>Laboratoire d'Informatique et de Recherche en IA</ens:nom>
+    <rdfs:label xml:lang="fr">LIRIMA - UASZ</rdfs:label>
+    <ens:rattacheA rdf:resource="#UASZ"/>
+  </ens:Laboratoire>
+
+  <!--  Projet de Recherche -->
+  <ens:ProjetRecherche rdf:ID="Projet_IA_Sante">
+    <ens:nom>IA pour la Santé en Afrique de l'Ouest</ens:nom>
+    <ens:titre>Projet IA Santé</ens:titre>
+    <ens:dateCreation>2023-09-01</ens:dateCreation>
+  </ens:ProjetRecherche>
+
+  <!--  Publications -->
+  <ens:Publication rdf:ID="Pub_Cisse_2024">
+    <ens:titre>Deep Learning pour le diagnostic médical</ens:titre>
+    <dc:date>2024-03-10</dc:date>
+    <dc:title>Deep Learning pour le diagnostic médical</dc:title>
+  </ens:Publication>
+
+  <ens:Publication rdf:ID="Pub_Diallo_2023">
+    <ens:titre>Modèles probabilistes pour la prévision climatique</ens:titre>
+    <dc:date>2023-08-22</dc:date>
+    <dc:title>Modèles probabilistes pour la prévision climatique</dc:title>
+  </ens:Publication>
+
+  <!--  Enseignants -->
+  <!-- Prof Cissé : Enseignant + membreDe LIRIMA => inféré EnseignantChercheur via OWL -->
+  <ens:Enseignant rdf:ID="Prof_Cisse">
+    <ens:nom>Abdoulaye Cissé</ens:nom>
+    <foaf:name>Abdoulaye Cissé</foaf:name>
+    <ens:email>abdoulaye.cisse@uasz.edu.sn</ens:email>
+    <foaf:mbox>mailto:abdoulaye.cisse@uasz.edu.sn</foaf:mbox>
+    <ens:enseigne rdf:resource="#UE_AnalyseNum"/>
+    <ens:enseigne rdf:resource="#UE_ML"/>
+    <ens:membreDe rdf:resource="#LIRIMA"/>
+    <ens:participeA rdf:resource="#Projet_IA_Sante"/>
+    <ens:publie rdf:resource="#Pub_Cisse_2024"/>
+  </ens:Enseignant>
+
+  <ens:Enseignant rdf:ID="Prof_Diallo">
+    <ens:nom>Mamadou Diallo</ens:nom>
+    <foaf:name>Mamadou Diallo</foaf:name>
+    <ens:email>mamadou.diallo@uasz.edu.sn</ens:email>
+    <foaf:mbox>mailto:mamadou.diallo@uasz.edu.sn</foaf:mbox>
+    <ens:enseigne rdf:resource="#UE_Proba"/>
+    <ens:membreDe rdf:resource="#LIRIMA"/>
+    <ens:publie rdf:resource="#Pub_Diallo_2023"/>
+  </ens:Enseignant>
+
+  <ens:Enseignant rdf:ID="Prof_Mbaye">
+    <ens:nom>Khady Mbaye</ens:nom>
+    <foaf:name>Khady Mbaye</foaf:name>
+    <ens:email>khady.mbaye@uasz.edu.sn</ens:email>
+    <foaf:mbox>mailto:khady.mbaye@uasz.edu.sn</foaf:mbox>
+    <ens:enseigne rdf:resource="#UE_NLP"/>
+  </ens:Enseignant>
+
+  <ens:Enseignant rdf:ID="Prof_Sane">
+    <ens:nom>Papa Sané</ens:nom>
+    <foaf:name>Papa Sané</foaf:name>
+    <ens:email>papa.sane@uasz.edu.sn</ens:email>
+    <foaf:mbox>mailto:papa.sane@uasz.edu.sn</foaf:mbox>
+    <ens:enseigne rdf:resource="#UE_DroitCivil"/>
+  </ens:Enseignant>
+
+  <!--  Étudiants -->
+  <ens:Etudiant rdf:ID="Etu_Diouf">
+    <ens:nom>Cheikh Diouf</ens:nom>
+    <foaf:name>Cheikh Diouf</foaf:name>
+    <ens:email>cheikh.diouf@uasz.edu.sn</ens:email>
+    <ens:inscritDans rdf:resource="#Master_IA"/>
+  </ens:Etudiant>
+
+  <ens:Etudiant rdf:ID="Etu_Mendy">
+    <ens:nom>Bineta Mendy</ens:nom>
+    <foaf:name>Bineta Mendy</foaf:name>
+    <ens:email>bineta.mendy@uasz.edu.sn</ens:email>
+    <ens:inscritDans rdf:resource="#Licence_Math"/>
+  </ens:Etudiant>
+
+  <!--  Doctorant -->
+  <ens:Doctorant rdf:ID="Doc_Badji">
+    <ens:nom>Lamine Badji</ens:nom>
+    <foaf:name>Lamine Badji</foaf:name>
+    <ens:email>lamine.badji@uasz.edu.sn</ens:email>
+    <ens:inscritDans rdf:resource="#Doctorat_Math"/>
+    <ens:inscritDansED rdf:resource="#ED_UASZ"/>
+    <ens:dirigePar rdf:resource="#Prof_Cisse"/>
+  </ens:Doctorant>
+
+  <!--  Personnel Administratif -->
+  <ens:PersonnelAdministratif rdf:ID="Admin_Faye">
+    <ens:nom>Awa Faye</ens:nom>
+    <foaf:name>Awa Faye</foaf:name>
+    <ens:email>awa.faye@uasz.edu.sn</ens:email>
+  </ens:PersonnelAdministratif>
+
+  <!-- Infrastructures -->
+  <ens:Amphitheatre rdf:ID="Amphi_Central">
+    <ens:nom>Amphithéâtre Central</ens:nom>
+    <ens:capacite rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</ens:capacite>
+  </ens:Amphitheatre>
+
+  <ens:SalleClasse rdf:ID="Salle_TP_Info">
+    <ens:nom>Salle TP Informatique</ens:nom>
+    <ens:capacite rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</ens:capacite>
+  </ens:SalleClasse>
+
+  <ens:Restaurant rdf:ID="Resto_U_UASZ">
+    <ens:nom>Restaurant Universitaire UASZ</ens:nom>
+    <ens:capacite rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</ens:capacite>
+  </ens:Restaurant>
+
+</rdf:RDF>

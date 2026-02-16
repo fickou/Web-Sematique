@@ -1,0 +1,213 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ens: <http://www.ugb.sn/ressources/ens-sup.rdfs#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ugb: <http://www.ugb.sn/ressources/UGB#> .
+
+# =============================================
+# JEU DE DONNÉES RDF : Université Gaston Berger (Turtle)
+# =============================================
+
+# =====================
+# UNIVERSITÉ
+# =====================
+
+ugb:UGB a ens:Universite ;
+    ens:nom "Université Gaston Berger" ;
+    rdfs:label "Université Gaston Berger de Saint-Louis"@fr ;
+    ens:dateCreation "1990-01-01" .
+
+# =====================
+# FACULTÉS / UFR
+# =====================
+
+ugb:UFR_SAT a ens:Faculte ;
+    ens:nom "UFR de Sciences Appliquées et de Technologie" ;
+    ens:faitPartieDe ugb:UGB ;
+    ens:offre ugb:Licence_Info, ugb:Master_GDIL, ugb:Doctorat_Info .
+
+ugb:UFR_LSH a ens:Faculte ;
+    ens:nom "UFR de Lettres et Sciences Humaines" ;
+    ens:faitPartieDe ugb:UGB .
+
+# =====================
+# ÉCOLE DOCTORALE
+# =====================
+
+ugb:ED_SEV a ens:EcoleDoctorale ;
+    ens:nom "École Doctorale Sciences et Technologies" ;
+    rdfs:label "ED Sciences, Technologies et Environnement"@fr .
+
+# =====================
+# DÉPARTEMENTS
+# =====================
+
+ugb:Dept_Informatique a ens:Departement ;
+    ens:nom "Département d'Informatique" ;
+    ens:appartientA ugb:UFR_SAT .
+
+ugb:Dept_Mathematiques a ens:Departement ;
+    ens:nom "Département de Mathématiques" ;
+    ens:appartientA ugb:UFR_SAT .
+
+# =====================
+# FORMATIONS
+# =====================
+
+ugb:Licence_Info a ens:Licence ;
+    ens:nom "Licence Informatique" ;
+    ens:titre "Licence en Informatique" ;
+    ens:contientUE ugb:UE_Algo, ugb:UE_BD .
+
+ugb:Master_GDIL a ens:Master ;
+    ens:nom "Master GDIL" ;
+    ens:titre "Master Gestion de Données et Ingénierie Logiciel" ;
+    ens:contientUE ugb:UE_WebSem, ugb:UE_BD .
+
+ugb:Doctorat_Info a ens:Doctorat ;
+    ens:nom "Doctorat en Informatique" ;
+    ens:titre "Doctorat en Sciences Informatiques" ;
+    ens:contientUE ugb:UE_WebSem .
+
+# =====================
+# UNITÉS D'ENSEIGNEMENT
+# =====================
+
+ugb:UE_WebSem a ens:UniteEnseignement ;
+    ens:nom "Web Sémantique" ;
+    ens:titre "Web Sémantique et Ontologies" ;
+    ens:credits "6"^^xsd:integer ;
+    ens:estEnseigneePar ugb:Prof_Diop .
+
+ugb:UE_BD a ens:UniteEnseignement ;
+    ens:nom "Bases de Données" ;
+    ens:titre "Bases de Données Avancées" ;
+    ens:credits "4"^^xsd:integer ;
+    ens:estEnseigneePar ugb:Prof_Ndiaye .
+
+ugb:UE_Algo a ens:UniteEnseignement ;
+    ens:nom "Algorithmique" ;
+    ens:titre "Algorithmique et Structures de Données" ;
+    ens:credits "5"^^xsd:integer ;
+    ens:estEnseigneePar ugb:Prof_Ba .
+
+# =====================
+# LABORATOIRE
+# =====================
+
+ugb:LANI a ens:Laboratoire ;
+    ens:nom "Laboratoire d'Analyse Numérique et d'Informatique" ;
+    rdfs:label "LANI - UGB"@fr ;
+    ens:rattacheA ugb:UGB .
+
+# =====================
+# PROJET DE RECHERCHE
+# =====================
+
+ugb:Projet_WebSemUGB a ens:ProjetRecherche ;
+    ens:nom "Modélisation Sémantique des Ressources Universitaires" ;
+    ens:titre "Projet Web Sémantique UGB" ;
+    ens:dateCreation "2024-01-15" .
+
+# =====================
+# PUBLICATIONS
+# =====================
+
+ugb:Pub_Diop_2024 a ens:Publication ;
+    ens:titre "Ontologies pour l'enseignement supérieur en Afrique" ;
+    dc:date "2024-06-15" ;
+    dc:title "Ontologies pour l'enseignement supérieur en Afrique" .
+
+ugb:Pub_Ndiaye_2023 a ens:Publication ;
+    ens:titre "Bases de données distribuées pour les universités" ;
+    dc:date "2023-11-20" ;
+    dc:title "Bases de données distribuées pour les universités" .
+
+# =====================
+# ENSEIGNANTS / ENSEIGNANTS-CHERCHEURS
+# =====================
+
+# Prof Diop : déclaré Enseignant + membreDe LANI
+# => Avec OWL, il sera inféré comme EnseignantChercheur
+ugb:Prof_Diop a ens:Enseignant ;
+    ens:nom "Moussa Diop" ;
+    foaf:name "Moussa Diop" ;
+    ens:email "moussa.diop@ugb.edu.sn" ;
+    foaf:mbox "mailto:moussa.diop@ugb.edu.sn" ;
+    ens:enseigne ugb:UE_WebSem ;
+    ens:membreDe ugb:LANI ;
+    ens:participeA ugb:Projet_WebSemUGB ;
+    ens:publie ugb:Pub_Diop_2024 .
+
+ugb:Prof_Ndiaye a ens:Enseignant ;
+    ens:nom "Fatou Ndiaye" ;
+    foaf:name "Fatou Ndiaye" ;
+    ens:email "fatou.ndiaye@ugb.edu.sn" ;
+    foaf:mbox "mailto:fatou.ndiaye@ugb.edu.sn" ;
+    ens:enseigne ugb:UE_BD ;
+    ens:membreDe ugb:LANI ;
+    ens:publie ugb:Pub_Ndiaye_2023 .
+
+# Prof Ba : Enseignant pur (pas membre d'un labo)
+# => Ne sera PAS inféré comme EnseignantChercheur
+ugb:Prof_Ba a ens:Enseignant ;
+    ens:nom "Ibrahima Ba" ;
+    foaf:name "Ibrahima Ba" ;
+    ens:email "ibrahima.ba@ugb.edu.sn" ;
+    foaf:mbox "mailto:ibrahima.ba@ugb.edu.sn" ;
+    ens:enseigne ugb:UE_Algo .
+
+# =====================
+# ÉTUDIANTS
+# =====================
+
+ugb:Etu_Fall a ens:Etudiant ;
+    ens:nom "Amadou Fall" ;
+    foaf:name "Amadou Fall" ;
+    ens:email "amadou.fall@ugb.edu.sn" ;
+    ens:inscritDans ugb:Master_GDIL .
+
+ugb:Etu_Sow a ens:Etudiant ;
+    ens:nom "Aissatou Sow" ;
+    foaf:name "Aissatou Sow" ;
+    ens:email "aissatou.sow@ugb.edu.sn" ;
+    ens:inscritDans ugb:Licence_Info .
+
+# =====================
+# DOCTORANT
+# =====================
+
+ugb:Doc_Gueye a ens:Doctorant ;
+    ens:nom "Ousmane Gueye" ;
+    foaf:name "Ousmane Gueye" ;
+    ens:email "ousmane.gueye@ugb.edu.sn" ;
+    ens:inscritDans ugb:Doctorat_Info ;
+    ens:inscritDansED ugb:ED_SEV ;
+    ens:dirigePar ugb:Prof_Diop .
+
+# =====================
+# PERSONNEL ADMINISTRATIF
+# =====================
+
+ugb:Admin_Sarr a ens:PersonnelAdministratif ;
+    ens:nom "Mariama Sarr" ;
+    foaf:name "Mariama Sarr" ;
+    ens:email "mariama.sarr@ugb.edu.sn" .
+
+# =====================
+# INFRASTRUCTURES
+# =====================
+
+ugb:Amphi_A a ens:Amphitheatre ;
+    ens:nom "Amphithéâtre A" ;
+    ens:capacite "500"^^xsd:integer .
+
+ugb:Salle_Info1 a ens:SalleClasse ;
+    ens:nom "Salle Informatique 1" ;
+    ens:capacite "40"^^xsd:integer .
+
+ugb:Bureau_Dept_Info a ens:Bureau ;
+    ens:nom "Bureau du Département Informatique" ;
+    ens:capacite "4"^^xsd:integer .

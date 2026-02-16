@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:ens="http://www.ugb.sn/ressources/ens-sup.rdfs#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xml:base="http://www.ugb.sn/ressources/UGB">
+
+  
+  <!-- UGB     -->
+  
+
+  <!--  Université -->
+  <ens:Universite rdf:ID="UGB">
+    <ens:nom>Université Gaston Berger</ens:nom>
+    <rdfs:label xml:lang="fr">Université Gaston Berger de Saint-Louis</rdfs:label>
+    <ens:dateCreation>1990-01-01</ens:dateCreation>
+  </ens:Universite>
+
+  <!-- Facultés / UFR -->
+  <ens:Faculte rdf:ID="UFR_SAT">
+    <ens:nom>UFR de Sciences Appliquées et de Technologie</ens:nom>
+    <ens:faitPartieDe rdf:resource="#UGB"/>
+  </ens:Faculte>
+
+  <ens:Faculte rdf:ID="UFR_LSH">
+    <ens:nom>UFR de Lettres et Sciences Humaines</ens:nom>
+    <ens:faitPartieDe rdf:resource="#UGB"/>
+  </ens:Faculte>
+
+  <!--  École Doctorale -->
+  <ens:EcoleDoctorale rdf:ID="ED_SEV">
+    <ens:nom>École Doctorale Sciences et Technologies</ens:nom>
+    <rdfs:label xml:lang="fr">ED Sciences, Technologies et Environnement</rdfs:label>
+  </ens:EcoleDoctorale>
+
+  <!--  Départements -->
+  <ens:Departement rdf:ID="Dept_Informatique">
+    <ens:nom>Département d'Informatique</ens:nom>
+    <ens:appartientA rdf:resource="#UFR_SAT"/>
+  </ens:Departement>
+
+  <ens:Departement rdf:ID="Dept_Mathematiques">
+    <ens:nom>Département de Mathématiques</ens:nom>
+    <ens:appartientA rdf:resource="#UFR_SAT"/>
+  </ens:Departement>
+
+  <!--  Formations -->
+  <ens:Licence rdf:ID="Licence_Info">
+    <ens:nom>Licence Informatique</ens:nom>
+    <ens:titre>Licence en Informatique</ens:titre>
+    <ens:contientUE rdf:resource="#UE_Algo"/>
+    <ens:contientUE rdf:resource="#UE_BD"/>
+  </ens:Licence>
+
+  <ens:Master rdf:ID="Master_GDIL">
+    <ens:nom>Master GDIL</ens:nom>
+    <ens:titre>Master Gestion de Données et Ingénierie Logiciel</ens:titre>
+    <ens:contientUE rdf:resource="#UE_WebSem"/>
+    <ens:contientUE rdf:resource="#UE_BD"/>
+  </ens:Master>
+
+  <ens:Doctorat rdf:ID="Doctorat_Info">
+    <ens:nom>Doctorat en Informatique</ens:nom>
+    <ens:titre>Doctorat en Sciences Informatiques</ens:titre>
+    <ens:contientUE rdf:resource="#UE_WebSem"/>
+  </ens:Doctorat>
+
+  
+
+  <!-- Lien Faculté -> Formations -->
+  <rdf:Description rdf:about="#UFR_SAT">
+    <ens:offre rdf:resource="#Licence_Info"/>
+    <ens:offre rdf:resource="#Master_GDIL"/>
+    <ens:offre rdf:resource="#Doctorat_Info"/>
+  </rdf:Description>
+
+  <!--  Unités d'Enseignement -->
+  <ens:UniteEnseignement rdf:ID="UE_WebSem">
+    <ens:nom>Web Sémantique</ens:nom>
+    <ens:titre>Web Sémantique et Ontologies</ens:titre>
+    <ens:credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</ens:credits>
+    <ens:estEnseigneePar rdf:resource="#Prof_Diop"/>
+  </ens:UniteEnseignement>
+
+  <ens:UniteEnseignement rdf:ID="UE_BD">
+    <ens:nom>Bases de Données</ens:nom>
+    <ens:titre>Bases de Données Avancées</ens:titre>
+    <ens:credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</ens:credits>
+    <ens:estEnseigneePar rdf:resource="#Prof_Ndiaye"/>
+  </ens:UniteEnseignement>
+
+  <ens:UniteEnseignement rdf:ID="UE_Algo">
+    <ens:nom>Algorithmique</ens:nom>
+    <ens:titre>Algorithmique et Structures de Données</ens:titre>
+    <ens:credits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ens:credits>
+    <ens:estEnseigneePar rdf:resource="#Prof_Ba"/>
+  </ens:UniteEnseignement>
+
+  <!--  Laboratoire -->
+  <ens:Laboratoire rdf:ID="LANI">
+    <ens:nom>Laboratoire d'Analyse Numérique et d'Informatique</ens:nom>
+    <rdfs:label xml:lang="fr">LANI - UGB</rdfs:label>
+    <ens:rattacheA rdf:resource="#UGB"/>
+  </ens:Laboratoire>
+
+  <!--  Projet de Recherche -->
+  <ens:ProjetRecherche rdf:ID="Projet_WebSemUGB">
+    <ens:nom>Modélisation Sémantique des Ressources Universitaires</ens:nom>
+    <ens:titre>Projet Web Sémantique UGB</ens:titre>
+    <ens:dateCreation>2024-01-15</ens:dateCreation>
+  </ens:ProjetRecherche>
+
+  <!-- Publications -->
+  <ens:Publication rdf:ID="Pub_Diop_2024">
+    <ens:titre>Ontologies pour l'enseignement supérieur en Afrique</ens:titre>
+    <dc:date>2024-06-15</dc:date>
+    <dc:title>Ontologies pour l'enseignement supérieur en Afrique</dc:title>
+  </ens:Publication>
+
+  <ens:Publication rdf:ID="Pub_Ndiaye_2023">
+    <ens:titre>Bases de données distribuées pour les universités</ens:titre>
+    <dc:date>2023-11-20</dc:date>
+    <dc:title>Bases de données distribuées pour les universités</dc:title>
+  </ens:Publication>
+
+  <!--  Enseignants / EnseignantChercheurs -->
+  <!-- Prof Diop : Enseignant qui est aussi membreDe LANI => inféré EnseignantChercheur via OWL -->
+  <ens:Enseignant rdf:ID="Prof_Diop">
+    <ens:nom>Moussa Diop</ens:nom>
+    <foaf:name>Moussa Diop</foaf:name>
+    <ens:email>moussa.diop@ugb.edu.sn</ens:email>
+    <foaf:mbox>mailto:moussa.diop@ugb.edu.sn</foaf:mbox>
+    <ens:enseigne rdf:resource="#UE_WebSem"/>
+    <ens:membreDe rdf:resource="#LANI"/>
+    <ens:participeA rdf:resource="#Projet_WebSemUGB"/>
+    <ens:publie rdf:resource="#Pub_Diop_2024"/>
+  </ens:Enseignant>
+
+  <ens:Enseignant rdf:ID="Prof_Ndiaye">
+    <ens:nom>Fatou Ndiaye</ens:nom>
+    <foaf:name>Fatou Ndiaye</foaf:name>
+    <ens:email>fatou.ndiaye@ugb.edu.sn</ens:email>
+    <foaf:mbox>mailto:fatou.ndiaye@ugb.edu.sn</foaf:mbox>
+    <ens:enseigne rdf:resource="#UE_BD"/>
+    <ens:membreDe rdf:resource="#LANI"/>
+    <ens:publie rdf:resource="#Pub_Ndiaye_2023"/>
+  </ens:Enseignant>
+
+  <ens:Enseignant rdf:ID="Prof_Ba">
+    <ens:nom>Ibrahima Ba</ens:nom>
+    <foaf:name>Ibrahima Ba</foaf:name>
+    <ens:email>ibrahima.ba@ugb.edu.sn</ens:email>
+    <foaf:mbox>mailto:ibrahima.ba@ugb.edu.sn</foaf:mbox>
+    <ens:enseigne rdf:resource="#UE_Algo"/>
+  </ens:Enseignant>
+
+  <!--  Étudiants -->
+  <ens:Etudiant rdf:ID="Etu_Fall">
+    <ens:nom>Amadou Fall</ens:nom>
+    <foaf:name>Amadou Fall</foaf:name>
+    <ens:email>amadou.fall@ugb.edu.sn</ens:email>
+    <ens:inscritDans rdf:resource="#Master_GDIL"/>
+  </ens:Etudiant>
+
+  <ens:Etudiant rdf:ID="Etu_Sow">
+    <ens:nom>Aissatou Sow</ens:nom>
+    <foaf:name>Aissatou Sow</foaf:name>
+    <ens:email>aissatou.sow@ugb.edu.sn</ens:email>
+    <ens:inscritDans rdf:resource="#Licence_Info"/>
+  </ens:Etudiant>
+
+  <!--  Doctorant -->
+  <ens:Doctorant rdf:ID="Doc_Gueye">
+    <ens:nom>Ousmane Gueye</ens:nom>
+    <foaf:name>Ousmane Gueye</foaf:name>
+    <ens:email>ousmane.gueye@ugb.edu.sn</ens:email>
+    <ens:inscritDans rdf:resource="#Doctorat_Info"/>
+    <ens:inscritDansED rdf:resource="#ED_SEV"/>
+    <ens:dirigePar rdf:resource="#Prof_Diop"/>
+  </ens:Doctorant>
+
+  <!--  Personnel Administratif -->
+  <ens:PersonnelAdministratif rdf:ID="Admin_Sarr">
+    <ens:nom>Mariama Sarr</ens:nom>
+    <foaf:name>Mariama Sarr</foaf:name>
+    <ens:email>mariama.sarr@ugb.edu.sn</ens:email>
+  </ens:PersonnelAdministratif>
+
+  <!-- Infrastructures -->
+  <ens:Amphitheatre rdf:ID="Amphi_A">
+    <ens:nom>Amphithéâtre A</ens:nom>
+    <ens:capacite rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</ens:capacite>
+  </ens:Amphitheatre>
+
+  <ens:SalleClasse rdf:ID="Salle_Info1">
+    <ens:nom>Salle Informatique 1</ens:nom>
+    <ens:capacite rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</ens:capacite>
+  </ens:SalleClasse>
+
+  <ens:Bureau rdf:ID="Bureau_Dept_Info">
+    <ens:nom>Bureau du Département Informatique</ens:nom>
+    <ens:capacite rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</ens:capacite>
+  </ens:Bureau>
+
+</rdf:RDF>
